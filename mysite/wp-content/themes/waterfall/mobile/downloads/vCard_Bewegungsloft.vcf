@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Bewegungsloft Fürth;;;;
+FN:Bewegungsloft Fürth
+ORG:;Bewegungsloft Fürth
+TEL;TYPE=work,voice:+4991178079935
+ADR;TYPE=work:;;Flössaustraße 22;Fürth;;90763 ;Deutschland
+EMAIL;TYPE=work,internet,pref:info@bewegungsloft.de
+URL;TYPE=work:http://bewegungsloft.de
+REV:20130725T192217Z
+END:VCARD

@@ -1,0 +1,81 @@
+.breadcrump {
+
+    // look
+    //background-color: $c_grey_light_ultra;
+    //border-bottom: 1px solid $c_stone_light;
+    //font-size: 0.857em; // 14px -> 12px
+    //position: relative;
+    //overflow: hidden!important; // don't change it due to javascript purposes  
+
+    background-color: $c_grey_light;
+    border-bottom: 1px solid $c_white;
+    font-size: 0.857em; // 14px -> 12px
+    overflow: hidden!important; // don't change it due to javascript purposes  
+    position: relative;
+
+
+    .hsliding {
+
+        // container of the links which overflows
+        padding: 0 $span_frame;
+        height: $s_middle;
+        white-space: nowrap;
+        
+    }
+    
+    
+    a {
+        // each links is
+        @extend %use-a-stone;
+        color: $c_black!important;
+        display: inline-block;
+        font-weight: bold;
+        height: $s_middle - 12px;
+        padding: ($s_middle - 12px*$lh_standard)/2 3px;
+        text-transform: uppercase;
+
+        &:active {
+            color: $c_white!important;
+        }
+
+        // each link gets an arrow-icon after the link
+        &:after {
+            @include set_icon ("arrright");
+            //@include shadow_text( 0px, 1px, 1px, $c_white);
+            //color: $c_white;
+            padding-left: 5px;              
+            vertical-align: -1px;           // centre
+        }
+
+
+        // last link has its special look as it's the current page
+        &:last-of-type {
+
+            //font-weight: bold;
+            text-transform: uppercase;
+            padding-right: 8%; // usability behaviour
+
+            &:after {
+                // don't show the arrow-icon 
+                content: "";
+            }
+        }
+
+    }
+
+
+    a.home {
+
+        padding-left: 0;
+
+        &:before {
+            @include set_icon ("home");
+            font-size: 1.6em;
+            vertical-align: -45%;
+            line-height: .5;
+        }
+
+    }
+
+
+}

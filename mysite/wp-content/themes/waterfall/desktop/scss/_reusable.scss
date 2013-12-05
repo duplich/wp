@@ -1,0 +1,329 @@
+
+/* ==========================================================================
+   Snippet - Inhalt
+   ========================================================================== */
+
+/*
+ *       1  - Variablen
+ *       2  - Font Snippets
+ *       5  - Font Snippets
+ *       10 - CSS 3 Snippets
+ *       15 - Reusable column setup
+ * 
+ */
+
+
+
+/* 1 - VARIABLEN */
+/* ____________________________________________________________________________ */
+
+// colors
+$c_bg: #f8f8f8;
+$c_white: #fff;
+$c_black: #131313;
+
+$c_logo_black: #070707;
+$c_logo_red: #ee3b24;
+$c_logo_grey: #656565;
+$c_base_font_color: #666;
+
+$c_grey_light_mega: #f1f1f1;
+$c_grey_light_ultra: #e0e0e0;
+$c_grey_light: #efefef;
+$c_grey_light_extra: #cdcdcd;
+$c_grey_middle: #aaaaaa;
+$c_grey_dark: #888888;
+
+$c_stone_light: #dcdee0;
+$c_stone_middle: #a0a5a8;
+$c_stone_black: #828586;
+
+
+
+// spaces
+$s_third: 10px;
+$s_half: 15px;
+$s_near: 20px;
+$s_base: 30px;
+$s_plus: 40px;
+$s_middle: 60px;
+$s_sized: 90px;
+$s_big: 120px;
+$s_huge: 150px;
+$s_extra: 220px;
+$s_mega: 280px;
+
+
+
+
+// fonts
+@import url(http://fonts.googleapis.com/css?family=Sintony:400,700);
+$f_sistony: 'Sintony', Arial, Helvetica, sans-serif;
+$f_arial: Arial, Helvetica, sans-serif;
+$lh_standard: 1.5;
+$lh_heading: 1.3;
+
+
+// font siztes
+$f_size_base: 87.5%; // 14px
+$f_size_36: 2.571em; // 19px
+$f_size_28: 2.000em; // 19px
+$f_size_24: 1.714em; // 19px
+$f_size_19: 1.357em; // 19px
+$f_size_18: 1.286em; // 18px
+$f_size_16: 1.143em; // 16px
+$f_size_15: 1.071em; // 15px
+$f_size_14: 1em;     // 14px
+$f_size_13: 0.929em; // 13px
+$f_size_12: 0.857em; // 12px
+
+
+
+
+// typografie
+$t_margin: 0.6em;           // margin before p, h1-6
+$t_margin_passage: 1.6em;   // margin after p, h1-6, lists and more
+
+
+
+// buttons
+$btn_height: 40px;
+$btn_height_big: 40px;
+$btn_height_small: 32px; 
+$btn_margin_bottom: 4px;    // standard margin
+$btn_side_padding: 2.5%; 
+
+
+// borders
+$border_std: 5px solid $c_grey_light;
+$border_slight: 1px solid $c_grey_light_extra;
+
+
+// topbar
+$topbar_height: 88px;
+
+
+    // logo
+    $logo_distance_top: 24px;
+    $logo_height: 40px;
+    $logo_width: 293px;
+
+    // logobar links
+    $logobar_links_top_margin: 32px;  // margin from top of the additional links
+
+    // navigation
+    $nav_bar_height: 32px;          // height of the nav-bar
+
+    $nav_arrow_right_span: 5%;      // distance to the right side for the arrow-icons
+    $nav_btn_left_padding: 5%;      // padding left for styling
+    $nav_btn_right_padding: 14%;    // padding right to prevents text to be overlayed by the arrow-icons
+
+
+// grid
+$span_frame: 5%;                    // span left and right 
+$span_1: 10%;
+$span_2: 20%;
+$span_3: 30%;
+$span_4: 40%;
+$span_5: 50%;
+$span_6: 60%;
+$span_7: 70%;
+$span_8: 80%;
+$span_9: 90%;
+$span_10: 100%;
+
+$width_standard: 1230px;          // max site size
+$span_40: 40px;                   // mostly left and right margin of site size
+
+$span_gutter: 0.8695652173910%;   // = 10px with base of 1150px
+$span_full: 100%;                 // = ($width_standard - 2 * $span_40)
+$span_halft: 49.13043478%;          // = 565px with base of 1150px
+$span_third: 32.46376812%;          // = 373.333px with base of 1150px
+$span_quater: 24.13043478%;         // = 277.5px with base of 1150px
+$span_fifth: 19.13043478%;          // = 220px with base of 1150px
+
+
+/* 2 - PROJEKT-SNIPPETS */
+/* ____________________________________________________________________________ */
+
+
+
+
+@mixin a ($color, $hover, $active, $visited) {
+    
+    a {
+        color: $color;
+        @include transition (color);
+    }  
+
+    a:hover {
+        color: $hover;
+    }  
+
+    a:active {
+        color: $active;
+    }  
+}
+
+
+
+@mixin css_triangle_right ($height: 32px, $width: 20px, $color: #000) {
+
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: $height/2 0 $height/2 $width;
+  border-color: transparent transparent transparent $color;
+
+}
+
+
+@mixin css_triangle_bottom_right ($height: 32px, $width: 32px, $color: #000) {
+
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 0 0 $height $width;
+  border-color: transparent transparent $color transparent;
+
+}
+
+
+@mixin css_triangle_top_left ($height: 32px, $width: 32px, $color: #000) {
+
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: $height $width 0 0;
+  border-color: $color transparent transparent transparent;
+
+}
+
+
+
+
+
+/* 5 - FONT SNIPPETS */
+/* ____________________________________________________________________________ */
+
+
+
+@mixin f_headline ($color, $weight:bold) {
+    color: $color;
+    font-family: $f_sistony;
+    font-weight: $weight;
+    text-transform: uppercase;
+}
+
+@mixin f_subline ($color, $weight:normal) {
+    color: $color;
+    font-family: $f_sistony;
+    font-weight: $weight;
+}
+
+@mixin f_text ($color) {
+    color: $color;
+    font-family:  $f_sistony;
+    }
+
+@mixin f_special ($color) {
+    color: $color;
+    font-family:  $f_arial;
+    font-weight: normal;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 10 - CSS 3 SNIPPETS */
+/* ____________________________________________________________________________ */
+
+@mixin border_box {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+} 
+
+
+
+@mixin rounded($radius: 10px) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+ 
+ 
+@mixin roundedSides($topLeft, $topRight, $bottomRight, $bottomLeft) {
+    -moz-border-radius-topleft: $topLeft;
+    -moz-border-radius-topright: $topRight;
+    -moz-border-radius-bottomright: $bottomRight;
+    -moz-border-radius-bottomleft: $bottomLeft;
+    border-top-left-radius:$topLeft;
+    border-top-right-radius: $topRight;
+    border-bottom-right-radius: $bottomRight;
+    border-bottom-left-radius: $bottomLeft; 
+}
+ 
+ 
+@mixin shadow( $off-y, $off-x, $blur, $color){
+      -moz-box-shadow: $off-y $off-x $blur $color; /* FF3.5+ */
+  -webkit-box-shadow:  $off-y $off-x $blur $color; /* Saf3.0+, Chrome */
+          box-shadow:  $off-y $off-x $blur $color; /* Opera 10.5, IE9 */
+}
+
+
+@mixin shadow_text( $off-y, $off-x, $blur, $color){
+      -moz-text-shadow: $off-y $off-x $blur $color; /* FF3.5+ */
+  -webkit-text-shadow:  $off-y $off-x $blur $color; /* Saf3.0+, Chrome */
+          text-shadow:  $off-y $off-x $blur $color; /* Opera 10.5, IE9 */
+}
+ 
+ 
+@mixin gradient($baseColor, $toColor, $direction:top){
+  background-color:$baseColor;
+  background-image: -moz-linear-gradient($direction, $baseColor, $toColor); /* FF3.6 */
+  background-image: -webkit-gradient(linear,left $direction,left bottom, color-stop(0, $baseColor),color-stop(1, $toColor));  /* Saf4+, Chrome */
+  background-image: linear-gradient($direction,$baseColor, $toColor);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='$baseColor', EndColorStr='$toColor');   /* IE6â��IE9 */
+}
+ 
+ 
+@mixin transition($property, $duration:0.2s, $function: ease-out){
+     -moz-transition: $property $duration $function;  /* FF3.7+ */
+     -o-transition: $property $duration $function;  /* Opera 10.5 */
+    -webkit-transition: $property $duration $function;  /* Saf3.2+, Chrome */
+    transition: $property $duration $function; 
+}
+ 
+ 
+@mixin transform($scale, $rotate, $trans-x, $trans-y, $skew-x, $skew-y){    
+    -moz-transform: scale($scale) rotate($rotate) translate($trans-x, $trans-y) skew(skew-x, skew-y);
+    -webkit-transform: scale($scale) rotate($rotate) translate($trans-x, $trans-y) skew(skew-x, skew-y);
+    -o-transform: scale($scale) rotate($rotate) translate($trans-x, $trans-y) skew(skew-x, skew-y);
+    -ms-transform: scale($scale) rotate($rotate) translate($trans-x, $trans-y) skew(skew-x, skew-y);
+    transform: scale($scale) rotate($rotate) translate($trans-x, $trans-y) skew(skew-x, skew-y);
+ 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

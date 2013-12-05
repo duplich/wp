@@ -1,0 +1,316 @@
+#navigation {
+
+    height: $nav_bar_height;
+    position: relative;
+    font-weight: bold;
+
+
+
+    a {
+        @extend %a-grey;
+    }
+
+    ul li {
+        display: inline-block;
+    }
+
+
+    // background overlays header img.
+    #transpnavbg {
+        position: absolute;
+        height: $nav_bar_height;
+        width: 100%;
+        background-color: $c_bg;
+        opacity: .95;
+    }
+
+    .links {
+        position: absolute;
+        @extend %col_base_size;
+        margin: 0 $span_40;
+
+        li {
+            line-height: $nav_bar_height;
+        }
+
+        // menu with preview element 
+        .prevmenu {
+
+            float: left;
+            &>a, &>span { 
+                display: block;
+                float: left;
+                height: 32px;
+                line-height: 32px;
+            }
+
+            .topic {
+                &:after {
+                    @include set_icon("arrright");
+                    vertical-align: -2px;
+                    padding-left: 6px;
+                }
+            }
+
+            .triangle {
+                //height: 32px;
+                @include css_triangle_right( 32px, 14px, $c_bg);
+                background-color: $c_black;
+
+            }
+
+            .subtopic {
+
+                background-color: $c_black;
+                color: $c_white;
+
+                a {
+                    @extend %a-white;
+                    padding: 0 16px;
+                }
+            }
+
+            .morebtn {
+
+                display: inline-block;
+                .openrhombus {
+                    background-color: $c_black;
+                }
+
+                .btnbody:after {
+                    @include set_icon(plus-circle);
+                    font-size: 1.2em;
+                    vertical-align: -2px;
+                    padding-left: 8px;
+                }
+
+                span.whenactive {
+                    display: none;
+                }
+
+                &.active {
+                  
+                    span.whenactive {
+                        display: inline;
+                    }
+                    span.wheninactive {
+                        display: none;
+                    }
+
+                    .btnbody:after {
+                        @include set_icon(minus-circle);
+                    }
+                    
+                }
+
+            }
+
+        }
+
+        // basic menu
+        ul.menu {
+            float: right;
+
+            li {
+                margin-left: 30px;
+
+                &:first-of-type {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}// end navigation
+
+
+
+
+
+
+
+
+
+
+
+
+
+// colorize navigation grey by adding .grey as class
+#navigation.grey { 
+
+    .links .prevmenu {
+
+        .triangle {
+            background-color: $c_grey_light_ultra;
+
+        }
+
+        .morebtn {
+
+            .openrhombus {
+                background-color: $c_grey_light_ultra;
+            }
+        }
+        
+        .subtopic {
+
+            background-color: $c_grey_light_ultra;
+            color: $c_logo_grey;
+
+            a {
+                @extend %a-grey;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Dropout Navigation
+.dropoutnav {
+    
+    background-color: $c_white;
+    border-top: 1px solid $c_grey_light_ultra;
+    padding: $s_base 0;
+    display: none;
+
+    a {
+        @extend %a-grey;
+        
+        @extend %a-outgoing;
+    }
+
+    li {
+        margin-bottom: 8px;
+    }
+
+    .main {   
+        @extend %col_base_size;
+    }
+
+    .subbar {
+
+        margin-top: $s_near;
+        
+        ul,
+        h4, h5,
+        ul li {
+            display: inline-block;
+        }
+
+        ul li:after {
+            content: " | ";
+        }
+        ul li:last-of-type:after {
+            content: "";
+        }
+
+        @extend %col_base_size;
+
+    }
+
+}// end dropoutnav
+
+
+
+
+
+
+// navigation for waypoints(.js)
+#waypointnav { 
+
+   
+    position: absolute;
+    z-index: 120;
+    width: 100%;
+    
+
+    .links {
+
+         @extend %col_full_size;
+         margin: 0 auto;
+         text-align: center;
+         padding: 8px 0;
+         //@include transition( width, 0.4s );
+
+        a {
+            display: inline;
+            padding: 5px 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: $f_size_13;
+
+        }
+    }
+}
+
+
+
+
+
+// Sticky behaviour handling 
+
+// .stuck class added by waypoints-sticky.js
+#waypointnav.stuck {
+    position: fixed;
+    top: 0px;
+    animation: animate-waypointnav .3s;
+    -webkit-animation: animate-waypointnav .3s; /* Safari and Chrome */
+
+    .links {
+        width: 100%;
+        
+    }
+}
+
+    // prevents the wrapper createt by waypoints-sticky.js to use the height - prevent jump
+    .sticky-wrapper-no-height {
+        height: 0px!important;
+    }
+
+
+    // animation box
+    @-webkit-keyframes animate-waypointnav {
+        from { top: -50px;}
+        to { top: 0px;}
+    }
+
+    @keyframes animate-waypointnav  {
+        from { top: -50px;}
+        to { top: 0px;}
+    }
+
+
+
+
+
+
+// color themes for waypointnav
+
+#waypointnav.white {
+    
+    .links {
+
+        background-color: $c_white;
+        
+        a{
+            @extend %a-black;
+        }
+    }
+
+}
+
+

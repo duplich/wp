@@ -1,0 +1,207 @@
+
+/* 1 - BASE STYLESHEET */
+/* ____________________________________________________________________________ */
+
+// has to be included in your css file if you would like to use icons
+// by the @include "iconset"; directive
+
+@font-face {
+	font-family: 'iconset-bewegungsloft';
+	src:url('../../fonts/iconset-bewegungsloft.eot');
+	src:url('../../fonts/iconset-bewegungsloft.eot?#iefix') format('embedded-opentype'),
+		url('../../fonts/iconset-bewegungsloft.woff') format('woff'),
+		url('../../fonts/iconset-bewegungsloft.ttf') format('truetype'),
+		url('../../fonts/iconset-bewegungsloft.svg#iconset-bewegungsloft') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+
+/* 2 - MIXINS TO ADD ICONS TO SELECTORS */
+/* ____________________________________________________________________________ */
+
+// use this mixins to add the icons to your selectors.
+
+
+// Set a icon for any purpose
+// IMPORTANT: Use it with the selectors :after or :before
+//
+//	$iconname is the name after the (%set-icon-)-prefix 
+//
+// example call to add a icon after: 
+//		.home-button:after {
+//			@include set_icon("menu");
+//			styles: xyz;
+//		}
+@mixin set_icon ($iconname) {
+    @extend %set-icon-styles-for-all !optional;
+    @extend %set-icon-#{$iconname} !optional;
+}
+
+
+// Set icon styles for buttons, so they have a centred icon on the right 
+// IMPORTANT: Use it with the selectors :after or :before and be aware,
+// that the parent Element ist set to position:relative; which sets the bounds
+@mixin btn_set_icon ($iconname, $size:1.2em, $spanright:5%) {
+    @extend %set-icon-styles-for-all !optional;
+    @extend %set-icon-#{$iconname} !optional;
+    font-size: $size;
+    position:absolute;
+    top: 50%;
+    margin-top: -0.5em;
+    right: $spanright;
+}
+
+
+
+// Generates icon classes with :before selector
+// Pass icon-names comma separated 
+// @include generate_before_icon_classes( tool, phone);
+// add icon anywhere with classes like: class="icon-tool"
+@mixin generate_before_icon_classes( $args... ) {
+
+    @each $icon in $args {
+      
+        .icon-#{$icon}:before {
+            @include set_icon($icon);
+        }
+
+    }
+}
+
+
+
+
+
+/* 3 - NEEDED STYLS FOR ICONS USED BY MIXINS */
+/* ____________________________________________________________________________ */
+
+// Use this mixins to add the icons to your selectors. 
+//
+//
+// If you have your own icon-font made with with IconMoon then do the following:
+// 1. 	Remove the listed classes form your basic icon styling and replace them with:
+//	 		%set-icon-styles-for-all { ... } 
+// 2. 	Prefix your icon-classes which holds the content-property with (%set-icon-) like:
+//			%set-icon-youriconname
+// 		Now you can call your stylings with your choosen name after the prefix: e.g. @include set_icon("youriconname"); 
+// 3. 	Have a look at the actual styling theme
+
+
+ %set-icon-styles-for-all {
+	font-family: 'iconset-bewegungsloft';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+%set-icon-facebook {
+	content: "\e000";
+}
+%set-icon-hack {
+	content: "\e001";
+}
+%set-icon-grouptraining {
+	content: "\e002";
+}
+%set-icon-personaltraining {
+	content: "\e003";
+}
+%set-icon-arrright {
+	content: "\e004";
+}
+
+%set-icon-arrup {
+	content: "\e005";
+}
+%set-icon-phone {
+	content: "\e006";
+}
+%set-icon-minus {
+	content: "\e007";
+}
+%set-icon-plus {
+	content: "\e008";
+}
+%set-icon-square {
+	content: "\e009";
+}
+%set-icon-arrleft {
+	content: "\e00a";
+}
+%set-icon-arrdown {
+	content: "\e00b";
+}
+%set-icon-mobile {
+	content: "\e00c";
+}
+%set-icon-pc {
+	content: "\e00d";
+}
+%set-icon-tool {
+	content: "\e00e";
+}
+%set-icon-pencil {
+	content: "\e00f";
+}
+%set-icon-mail {
+	content: "\e010";
+}
+%set-icon-letter {
+	content: "\e011";
+}
+%set-icon-place {
+	content: "\e012";
+}
+%set-icon-menu {
+	content: "\e013";
+}
+%set-icon-home {
+	content: "\e014";
+}
+%set-icon-route {
+	content: "\e015";
+}
+%set-icon-vcard {
+	content: "\e016";
+}
+%set-icon-minus-rhombus {
+	content: "\e017";
+}
+%set-icon-plus-rhombus {
+	content: "\e018";
+}
+%set-icon-minus-circle {
+	content: "\e019";
+}
+%set-icon-plus-circle {
+	content: "\e01a";
+}
+%set-icon-arrright-line {
+	content: "\e01b";
+}
+%set-icon-arrleft-line {
+	content: "\e01c";
+}
+%set-icon-arrdown-line {
+	content: "\e01d";
+}
+%set-icon-arrup-line {
+	content: "\e01e";
+}
+%set-icon-arrright-bold {
+	content: "\e01f";
+}
+%set-icon-arrup-bold {
+	content: "\e020";
+}
+%set-icon-arrdown-bold {
+	content: "\e021";
+}
+%set-icon-arrleft-bold {
+	content: "\e022";
+}

@@ -1,0 +1,1199 @@
+// slideshow styling
+.slideshow {
+    
+    position: relative;
+
+    .slidenav {
+    
+        $sliednav_sensitive_width: 120px;
+        $sliednav_sensitive_height: 600px;
+
+        $slidenav_height: 200px;
+        $slidenav_width: 80px;
+        $slidenav_icon_size: 120px;
+
+
+        position: relative;
+        z-index: 80;
+
+        .prev, 
+        .next {
+            display: table;
+            height: $sliednav_sensitive_height;
+            opacity: 0;
+            position: absolute;
+            width: $sliednav_sensitive_width;
+            
+            @include transition( opacity, 0.4s );
+            
+            &:hover {
+                opacity: .85;
+            }
+
+            .button {
+                background-color: $c_black;
+                cursor: pointer;
+                display: block;
+                height: $slidenav_height;
+                margin-top: $slidenav_height/2 * -1;
+                overflow: hidden;
+                position: absolute;
+                top: 48%;
+                width: $slidenav_width;
+
+                .icon:before {
+                    color: $c_logo_grey;
+                    font-size:  $slidenav_icon_size;
+                    padding-top:  ($slidenav_height - $slidenav_icon_size)/2 * 0.96;
+                }
+            }
+        }
+
+        .prev {
+
+            left: 0px;
+
+            .button {
+
+                left: 0px;
+
+                .icon:before {
+                    @include set_icon(arrleft-line);
+                    float: left;
+                    margin-left: -22px;
+                }
+            }
+        }
+
+        .next {
+     
+            right: 0px;
+
+            .button  {
+
+                right: 0px;
+
+                .icon:before {
+                    @include set_icon(arrright-line);
+                    float: right;
+                    margin-right: -22px;
+                }
+            }
+        }
+    }
+
+
+    // pagination with icons 
+    .pagination {
+        
+        //position: relative;
+        height: 30px;
+        text-align: center;
+
+        .pagenumber {
+            
+            // sensitive area
+            height: 30px;
+            cursor: pointer;
+            display: inline-block;
+            
+
+
+            &:hover,
+            &.active {
+
+                .button {
+                    background-color: $c_logo_red;
+                }
+            }
+            
+            // styling
+            .button {
+                background-color: $c_black;
+                height: 5px;
+                width: 30px;
+                margin: 10px 12px;
+
+            }
+        }
+    }
+    
+    
+
+    // pagination with text 
+    .text-pagination {
+
+
+        
+        //position: relative;
+        text-align: center;
+        opacity: .85;
+        background-color: $c_black;
+        color: $c_grey_middle;
+        overflow: hidden;
+        font-weight: bold;
+        @include transition( opacity, 0.3s );
+
+        &:hover {
+            opacity: .95;
+        }
+
+        .pagenumber {
+
+            cursor: pointer;
+            display: inline-block;
+
+            &:hover,
+            &.active {
+
+                color: $c_white;
+
+                .button:before {
+                    color: $c_white;
+                }
+                .button:after {
+                    color: $c_white;
+                }
+            }
+            
+            // styling
+            .button {
+                
+                border-top: 2px solid $c_black;
+                margin: 8px 4px;
+
+
+                &:before {
+                    @include set_icon( arrleft);
+                    color: transparent;
+                    vertical-align: -2px;
+                }
+                &:after {
+                    @include set_icon( arrright);
+                    color: transparent;
+                    vertical-align: -2px;
+                }
+
+            }
+        }
+    }// end text-pagination
+
+    
+
+    // PAGINATION POSITION 
+
+    // pagination on the top
+    .pagination-pos-top {
+        width: 100%;
+        position: absolute;
+        top: 0px;
+    }
+    
+
+    // pagination on the bottom
+    .pagination-pos-bottom {
+        //width: 100%;
+        padding: 0 16px;
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+    }
+    
+
+    // pagination as box
+    .pagination-pos-box {
+        width: 280px;
+        padding: 16px 16px;
+        margin-left: -140px; 
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        
+        .pagenumber {
+            display: none;
+            width: 100%;
+            
+
+            &:hover,
+            &.active { 
+                
+                display: block;
+
+            }
+        }
+
+        &:hover,
+        &:active {
+            
+            animation: animate-pagination-up .4s;
+            -webkit-animation: animate-pagination-up .4s; /* Safari and Chrome */
+            max-height: 250px;
+            .pagenumber {
+                display: block; 
+            }
+        }
+    }
+
+
+}// end slideshow
+
+// animation for pagination box type
+@-webkit-keyframes animate-pagination-up {
+    from { max-height: 80px;}
+    to { max-height: 250px;}
+}
+
+@keyframes animate-pagination-up  {
+    from { max-height: 80px;}
+    to { max-height: 250px;}
+}
+
+
+
+
+
+
+
+
+
+//-------> SLIDE STYLES     
+
+
+// base style
+.slide-basic {
+    display: block;
+}
+
+    // sizes
+    .slide {
+        //width: 100%;
+        height: 645px;
+        display: block;
+        position: relative;
+    }
+
+
+        // reusable snippets
+
+        %slide-with-img {
+            .img {
+                @extend .slide;
+                display: block;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+        }
+    
+
+
+
+
+        // Image slide with box
+        .slide-box {
+
+            @extend .slide-basic;
+            @extend .slide;
+            @extend %slide-with-img;
+            
+            
+            h1, h2, h3 {
+                margin-top: .2em;
+                font-size: $f_size_28;
+            }
+
+            h3 {
+                color: $c_logo_grey;
+                font-size: 18px;
+                line-height: $lh_standard;
+                text-transform: none;
+                font-weight: normal;
+                font-style: normal;
+                margin-bottom: 0;
+            }
+
+            .boxpos {
+                position: absolute;
+                left: 8%;
+                top: 32.4%;
+                animation: animate-box-down .3s;
+                -webkit-animation: animate-box-down .3s; /* Safari and Chrome */
+            }
+
+            // .box{
+            //     @extend .box-basic;
+            // }
+
+        }
+
+    
+
+        // animation box
+        @-webkit-keyframes animate-box-down {
+            from { top: 22%;}
+            to { top: 32.4%;}
+        }
+
+        @keyframes animate-box-down  {
+            from { top: 22%;}
+            to { top: 32.4%;}
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Image slide with services
+        .slide-services {
+
+            @extend .slide-basic;
+            @extend .slide;
+            @extend %slide-with-img;
+            
+            
+            h1, h2, h3 {
+                margin: 0 0 .3em 0;
+                font-size: $f_size_28;
+                //color: $c_logo_red;
+            }
+
+
+            .boxpos {
+                position: absolute;
+                top: 60%;
+            }
+
+            .box{
+
+                display: block;
+                width: 100%;
+                
+
+                .content {
+                    width: 1100px;
+                    padding: 25px;
+                    background-color: $c_white;
+                    margin: 0 auto;
+                }
+
+                .catchwords { width: 100%; }
+                
+            }
+
+        }
+
+
+
+
+
+
+
+        
+
+        // Image slide with box-bottom
+        .slide-box-bottom {
+
+            @extend .slide-basic;
+            @extend .slide;
+            @extend %slide-with-img;
+            
+            
+            h1, h2, h3 {
+                margin-top: .2em;
+                font-size: $f_size_24;
+            }
+
+
+            .box-center {
+
+                width: 100%;
+
+                .content {
+
+                    background-color: $c_white; /* The Fallback */
+                    background-color: rgba(255, 255, 255, 0.9); 
+                    height: 300px;
+                    margin: 0 auto;
+                    width: 800px;
+
+                    .index {
+                        color: $c_grey_middle;
+                        display: block;
+                        font-size: 180px;
+                        font-weight: bold;
+                        line-height: 1;
+                        margin-right: 30px;
+                        opacity: .85;
+                        text-align: right;
+                        width: 200px;
+                    }
+
+                    .message {
+                        width: 500px;
+                    }
+
+                    .index,
+                    .message {
+                        margin-top: 40px;
+                    }
+                }
+
+            }
+
+            .boxpos {
+                position: absolute;
+                bottom: 0px;
+            }
+
+        }
+
+
+
+
+
+        // slide-box-principles-start
+        .slide-box-principles-start {
+
+            @extend .slide-basic;
+            @extend .slide;
+            @extend %slide-with-img;
+           
+            .content {
+                
+                width: 100%;
+                position: absolute;
+                top: 25%;
+                text-align: center;
+
+                .headline {
+                    font-size: 24px;
+                }
+                .subline {
+                    font-size: 80px;
+                    color: $c_logo_red;
+                    margin: .3em 0;
+                }
+            }
+
+            .buttonpos {
+                position: absolute;
+                right: 0px;
+                top: 42%;
+            }
+        }
+
+
+
+        // slide-box-principles-end
+        .slide-box-principles-end {
+
+            @extend .slide-basic;
+            @extend .slide;
+            @extend %slide-with-img;
+           
+            .content {
+                
+                width: 100%;
+                position: absolute;
+                top: 15%;
+
+                .wrapper{
+                    width: 1110px;
+                    margin: 0 auto 0 auto;
+                }
+
+                .block {
+                    margin-bottom: $s_base;
+                    padding: 0 2.5%;
+                }
+
+                .headline {
+                    font-size: 36px;
+                }
+                .subline {
+                    font-size: 18px;
+                    color: $c_logo_grey;
+                    text-transform: none;
+                    font-weight: normal;
+                }
+
+                .headline,
+                .subline,
+                h4, p {
+                    margin: $t_margin * 0.1 0;
+                }
+            }
+
+        }
+        
+
+
+
+
+
+
+
+
+        // slide-box-loft-start
+        .slide-box-loft-start {
+
+            @extend .slide-basic;
+            @extend .slide;
+            @extend %slide-with-img;
+           
+            .content {
+                
+                width: 100%;
+                position: absolute;
+                top: 25%;
+                text-align: center;
+
+                .headline {
+                    font-size: 180px;
+                    color: $c_white;
+                    line-height: 1;
+                    margin: 0;
+                }
+                .subline {
+                    font-size: 18px;
+                    color: $c_white;
+                    margin: .3em 0;
+                    text-transform: none;
+                }
+            }
+
+            .buttonpos {
+                position: absolute;
+                right: 0px;
+                top: 42%;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // slide for cites
+        .slide-cite {
+
+            @extend .slide-basic;
+            @extend .slide;
+
+            h1, h2, h3 {
+                font-size: $f_size_16;
+                text-transform: none;
+                font-weight: normal;
+            }
+
+            .cite {
+                font-size: $f_size_28;
+                font-weight: bold;
+            } 
+
+            .wrap {
+                width: 100%;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                bottom: 0px;
+            }
+
+            .content {
+                width: 760px;
+                margin: 180px auto 0 auto;
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+        // slide with map & slide contact
+        .slide-contact,
+        .slide-map {
+
+            @extend .slide-basic;
+            @extend .slide;
+            
+            
+            h1, h2, h3 {
+                margin-top: .2em;
+                font-size: $f_size_24;
+            }
+
+            .adresse {
+                color: $c_grey_middle;
+                //font-size: 16px;
+                line-height: $lh_standard * .9;
+                text-transform: none;
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+
+            .map {
+                @extend .slide;
+                display: block;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+
+
+        } 
+
+
+        // slide with map
+        .slide-map {
+            .boxpos {
+                left: 8%;
+                top: 32.4%;
+            }
+        }
+
+
+
+
+
+        // slide with contact
+        .slide-contact {
+
+
+
+            .overlay {
+                position: absolute;
+                width: 100%;
+                background-color: $c_black;
+                opacity: .9;
+                top: 0px;
+                bottom: 0px;
+            }
+
+            
+            .formcontainer {
+                position: absolute;
+                width: 40%;
+                padding: 5%;
+                background-color: $c_white;
+                opacity: .95;
+                top: 0px;
+                bottom: 0px;
+                
+                #form-mail,
+                #form-subject,
+                #form-message{
+                    background-color: $c_white;
+                }
+
+                #form-message {
+                    min-height: 120px;
+                }
+
+                label,
+                .form-info h6 {
+                    color: $c_grey_middle;
+                }
+
+            }
+           
+
+            .boxpos {
+                left: 62.3%;
+                top: 20%;
+            }
+
+        } 
+
+
+
+        
+
+
+        // slide configurator 
+        .slide-confi {
+
+            @extend .slide-basic;
+            @extend .slide;
+            @extend %slide-with-img;
+
+            .confi-icon {
+                position: absolute;
+                top: 118px;
+                left: 38px;
+                width: 50px;
+                height: 50px;
+                font-size: 50px;
+                opacity: .6;
+                @extend %a-grey-light;
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+
+
+            // slide configurator start
+            .slide-confi-start {
+
+                @extend .slide-confi;
+               
+                .content {
+                    
+                    width: 400px;
+                    position: absolute;
+                    top: 80px;
+                    left: 120px;
+
+                    .headline {
+                        font-size: 16px;
+                        color: $c_grey_middle;
+                        text-transform: none;
+                        font-weight: normal;
+                    }
+                    .subline {
+                        font-size: 36px;
+                        margin: .3em 0;
+                    }
+
+                    ul.types {
+                        text-align: right;
+                        padding: 0 35% 0 0;
+
+                        
+
+                        .button {
+                            @extend %a-black;
+                            display: block;
+                            padding: 8px 0;
+                            font-weight: bold;
+                        }
+
+                        .icon-outgoing:after {
+                            color: $c_logo_red;
+                            font-size: 22px;
+                            vertical-align: -0.2em;
+                        }
+                    }
+
+                    .description {
+                        position: absolute;
+                        top: 410px;
+                        h5 {
+                            color: $c_grey_middle;
+                            margin-bottom: 0;
+                        }
+                        p {
+                            color: $c_grey_middle;
+                            margin-top: 0;
+                        }
+                    }
+                }
+            }
+
+
+
+
+            // slide configurator type
+            .slide-confi-type {
+
+                @extend .slide-confi;
+
+                background-color: $c_white;
+
+                .confi-back {
+                    position: absolute;
+                    width: 100px;
+                    top: 600px;
+                    left: 24px;
+                    padding: 8px 0;
+                    font-weight: bold;
+
+                    @extend %a-grey-light;
+
+                    &:before {
+                        font-size: 22px;
+                        vertical-align: -0.2em;
+                    }
+                }
+
+
+                .main-headline {
+                    position: absolute;
+                    width: 990px;
+                    top: 50px;
+                    left: 160px;
+                    font-size: 28px;
+                    margin: .3em 0;
+                    color: $c_grey_middle;
+                    //text-transform: none;
+                    font-weight: normal;
+                }
+               
+                .wrapper {
+                    
+                    width: 990px;
+                    position: absolute;
+                    top: 125px;
+                    left: 160px;
+
+                    
+                }
+
+                .serviceslisting {
+                    position: absolute;
+                    background: none;
+                    width: 990px;
+                    top: 380px;
+                    left: 160px;
+                    padding: 0;
+                    .headline {
+                        font-size: 15px;
+                    }
+
+                    .imgcontainer {
+                        height: 140px;
+                    }
+
+                    .icon-outgoing {
+                        color: $c_grey_dark;
+                        font-weight: normal;
+                    }
+                }
+
+            }
+
+
+
+
+    // slide training-types 
+    .slide-trainingtypes {
+
+        @extend .slide-basic;
+        @extend .slide;
+
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+
+        background-color: $c_white;
+        
+        .headlinegroup,
+        .wrapper {
+            width: 960px;
+            margin: 0 auto;
+            //position: relative;
+        }
+
+        .headlinegroup {
+            text-align: center;
+            margin-top: 120px;
+
+            .headline {
+                font-size: $f_size_36;
+            }
+
+            .subline {
+                font-size: $f_size_16;
+                margin: .3em 0;
+                color: $c_grey_middle;
+                text-transform: none;
+                font-weight: normal;
+            }
+        }
+
+        .wrapper {
+            margin-top: 60px;
+        }
+
+
+        .type {
+
+            width: 46%;
+            position: relative;
+
+            &.left {
+
+
+            }
+
+            &.right {
+                
+
+            }
+
+            .description {
+                width: 83%;
+                position: absolute;
+                right: 0;
+            }
+
+            .icon {
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                top: 14px;
+                font-size: 50px;
+                color: $c_black;
+            }
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+    // slide concept 
+    .slide-concept {
+
+        @extend .slide-basic;
+        @extend .slide;
+        @extend %slide-with-img;
+        
+        .leftside,
+        .rightside {
+            display: block;
+            position: absolute;
+        }
+
+        .leftside {
+            width: 430px;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            background-color: $c_black;
+
+            .headline {
+                color: $c_white;
+                text-align: center;
+                margin-top: 132px;
+                font-size: $f_size_36;
+            }
+        }
+
+        .rightside {
+            top: 0;
+            left: 0;
+
+            .citecontainer {
+
+                width: 470px;
+                position: absolute;
+                left: 600px;
+                top: 90px;
+
+                .cite {
+                    font-size: $f_size_18;
+                    color: $c_stone_middle;
+                    text-indent: -8px;
+                }
+                .name {
+                    text-align: right;
+                }
+            }
+        }
+
+
+        .scroll-down {
+            left: 180px;
+            top: 460px;
+            color: #424242;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+    // slide team 
+    .slide-team {
+
+        @extend .slide-basic;
+        @extend .slide;
+        @extend %slide-with-img;
+
+        .wrapper {
+
+            display: block;
+            position: absolute;
+            width: 400px;
+            top: 200px;
+            left: 650px;
+
+            .subline {
+                font-size: $f_size_36;
+                margin: .1em 0;
+            }
+
+            .headline {
+                font-size: $f_size_16;
+                text-transform: none;
+                margin: .1em 0;
+            }
+        }
+
+        .scroll-down {
+            left: 880px;
+            top: 420px;
+            color: $c_black;
+        }
+    }
+
+
+
+
+
+
+    // slide mission 
+    .slide-mission {
+
+        @extend .slide-basic;
+        @extend .slide;
+
+        .wrapper {
+
+            position: relative;
+            margin: 0 auto 0 auto;
+            width: 400px;
+            top: 160px;
+
+            .headline,
+            .mission {
+                text-align: center;
+            }
+
+
+            .headline {
+                font-size: 80px;
+                margin: .1em 0;
+            }
+
+            .mission {
+                font-size: $f_size_18;
+                //font-weight: bold;
+            }
+        }
+    }
+
+
+
+    // slide video 
+    .slide-video {
+
+        @extend .slide-basic;
+        @extend .slide;
+
+        height: auto;
+
+        .video-wrapper {
+
+            width: 100%;
+        }
+    }
+    
+
+
+
+
+
+
+
+
+
+
+/* Styles a box -dwon Icon */
+.box-basic {
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 280px;
+    height: 260px;
+    padding: 25px;
+
+    .content {
+        width: 280px;
+        position: absolute;
+        bottom: 25px;
+    }
+
+}
+
+    .box-white {
+        
+        @extend .box-basic;
+        background-color: $c_white; /* The Fallback */
+        background-color: rgba(255, 255, 255, 0.85); 
+
+    }
+
+    .box-black {
+        
+        @extend .box-basic;
+        @extend .colortheme-black;
+        background-color: rgba(0, 0, 0, 0.85); 
+
+    }
+
+
+
+
+
+/* Scroll-dwon Icon */
+.scroll-down {
+    
+    width: 60px;
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    text-align: center;
+
+    .label {
+        font-size: 13px;
+    }
+
+    .icon {
+        
+        width: 40px;
+        height: 40px;
+        font-size: 40px;
+        margin: 4px auto;
+
+        &:before {
+           @include set_icon("arrdown-bold"); 
+        }
+    }
+    
+}

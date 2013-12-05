@@ -1,0 +1,10 @@
+- IMAGE ANWEISUNGEN -
+
+
+MOBILE IMAGES 
+
+	Fotografien für die mobile Website sollte auf Speicherplatz-Größe optimiert werden; umso weniger umso besser. 
+
+	- Format: .jpg
+	- Weite: 480px
+	- Qualität: 75%

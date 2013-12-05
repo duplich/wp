@@ -1,0 +1,308 @@
+
+/* ==========================================================================
+   Snippet - Inhalt
+   ========================================================================== */
+
+/*
+ *       1  - Variablen
+ *       2  - Font Snippets
+ *       5  - Font Snippets
+ *       10 - CSS 3 Snippets
+ *       15 - Reusable column setup
+ * 
+ */
+
+
+
+/* 1 - VARIABLEN */
+/* ____________________________________________________________________________ */
+
+// colors
+$c_bg: #f8f8f8;
+$c_white: #fff;
+$c_black: #131313;
+
+$c_logo_black: #070707;
+$c_logo_red: #ee3b24;
+$c_logo_grey: #656565;
+$c_base_font_color: #666;
+
+$c_grey_light_ultra: #eeeeee;
+$c_grey_light_extra: #cdcdcd;
+$c_grey_light: #dfdfdf;
+$c_grey_middle: #aaaaaa;
+$c_grey_dark: #888888;
+
+$c_stone_light: #dcdee0;
+$c_stone_middle: #a0a5a8;
+$c_stone_black: #828586;
+
+
+
+// spaces
+
+$s_third: 10px;
+$s_half: 15px;
+$s_near: 20px;
+$s_base: 30px;
+$s_plus: 40px;
+$s_middle: 50px;
+$s_sized: 70px;
+$s_big: 90px;
+$s_huge: 140px;
+
+
+
+
+// fonts
+@import url(http://fonts.googleapis.com/css?family=Sintony:400,700);
+$f_sistony: 'Sintony', Arial, Helvetica, sans-serif;
+$f_arial: Arial, Helvetica, sans-serif;
+$lh_standard: 1.5;
+$lh_heading: 1.3;
+
+// font siztes
+$f_size_base: 87.5%; // 14px
+$f_size_28: 2em; // 28px
+$f_size_22: 1.571em; // 22px
+$f_size_19: 1.357em; // 19px
+$f_size_18: 1.286em; // 18px
+$f_size_17: 1.214em; // 17px
+$f_size_16: 1.143em; // 16px
+$f_size_15: 1.071em; // 15px
+$f_size_14: 1em;     // 14px
+$f_size_13: 0.929em; // 13px
+$f_size_13: 0.929em; // 13px
+$f_size_12: 0.857em; // 12px
+
+
+
+
+// typografie
+$t_margin: 0.6em;           // margin before p, h1-6
+$t_margin_passage: 1.6em;   // margin after p, h1-6, lists and more
+
+
+
+// buttons
+$btn_height: 30px;
+$btn_height_big: 50px;
+$btn_height_small: 20px; 
+$btn_margin_bottom: 4px;    // standard margin
+$btn_side_padding: 2.5%; 
+
+
+// borders
+$border_std: 1px solid $c_grey_light_extra;
+$border_red: 4px solid $c_logo_red;
+
+
+// topbar
+$topbar_height: 58px;
+
+
+    // logo
+    $logo_base64: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKYAAAAOCAYAAAClx2f0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3NpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0Y2MzMjZhNC0xMWJkLTQ0NzItOTFjZS00OTdkYmNlZGFkOTkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjJCQ0NCNzRFNkVGMTFFMjg1RTU5ODUzQzJEMTc1MzQiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjJCQ0NCNzNFNkVGMTFFMjg1RTU5ODUzQzJEMTc1MzQiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MWMxYTkwMDEtNjgzZS00Yjg4LWEwNzYtNTkyNjI4M2ZmY2MyIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRjYzMyNmE0LTExYmQtNDQ3Mi05MWNlLTQ5N2RiY2VkYWQ5OSIvPiA8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';
+    $logo_distance_top: 23px;
+    $logo_height: 14px;
+    $logo_width: 166px;
+
+    // navigation
+    $nav_arrow_right_span: 5%;      // distance to the right side for the arrow-icons
+    $nav_btn_left_padding: 5%;      // padding left for styling
+    $nav_btn_right_padding: 14%;    // padding right to prevents text to be overlayed by the arrow-icons
+
+
+// grid
+$span_frame: 5%;                    // span left and right 
+$span_1: 10%;
+$span_2: 20%;
+$span_3: 30%;
+$span_4: 40%;
+$span_5: 50%;
+$span_6: 60%;
+$span_7: 70%;
+$span_8: 80%;
+$span_9: 90%;
+$span_10: 100%;
+
+
+
+/* 2 - PROJEKT-SNIPPETS */
+/* ____________________________________________________________________________ */
+
+
+
+
+@mixin a ($color, $hover, $active, $visited) {
+    
+    a {
+        color: $color;
+        @include transition (color);
+    }  
+
+    a:hover {
+        color: $hover;
+    }  
+
+    a:active {
+        color: $active;
+    }  
+}
+
+
+
+
+
+
+
+
+
+/* 5 - FONT SNIPPETS */
+/* ____________________________________________________________________________ */
+
+
+
+@mixin f_headline ($color, $weight:bold) {
+    color: $color;
+    font-family: $f_sistony;
+    font-weight: $weight;
+    text-transform: uppercase;
+}
+
+@mixin f_subline ($color, $weight:normal) {
+    color: $color;
+    font-family: $f_sistony;
+    font-weight: $weight;
+}
+
+@mixin f_text ($color) {
+    color: $color;
+    font-family:  $f_sistony;
+    }
+
+@mixin f_special ($color) {
+    color: $color;
+    font-family:  $f_arial;
+    font-weight: normal;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 10 - CSS 3 SNIPPETS */
+/* ____________________________________________________________________________ */
+
+@mixin border_box {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+} 
+
+
+
+@mixin rounded($radius: 10px) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+ 
+ 
+@mixin roundedSides($topLeft, $topRight, $bottomRight, $bottomLeft) {
+    -moz-border-radius-topleft: $topLeft;
+    -moz-border-radius-topright: $topRight;
+    -moz-border-radius-bottomright: $bottomRight;
+    -moz-border-radius-bottomleft: $bottomLeft;
+    border-top-left-radius:$topLeft;
+    border-top-right-radius: $topRight;
+    border-bottom-right-radius: $bottomRight;
+    border-bottom-left-radius: $bottomLeft; 
+}
+ 
+ 
+@mixin shadow( $off-y, $off-x, $blur, $color){
+      -moz-box-shadow: $off-y $off-x $blur $color; /* FF3.5+ */
+  -webkit-box-shadow:  $off-y $off-x $blur $color; /* Saf3.0+, Chrome */
+          box-shadow:  $off-y $off-x $blur $color; /* Opera 10.5, IE9 */
+}
+
+
+@mixin shadow_text( $off-y, $off-x, $blur, $color){
+      -moz-text-shadow: $off-y $off-x $blur $color; /* FF3.5+ */
+  -webkit-text-shadow:  $off-y $off-x $blur $color; /* Saf3.0+, Chrome */
+          text-shadow:  $off-y $off-x $blur $color; /* Opera 10.5, IE9 */
+}
+ 
+ 
+@mixin gradient($baseColor, $toColor, $direction:top){
+  background-color:$baseColor;
+  background-image: -moz-linear-gradient($direction, $baseColor, $toColor); /* FF3.6 */
+  background-image: -webkit-gradient(linear,left $direction,left bottom, color-stop(0, $baseColor),color-stop(1, $toColor));  /* Saf4+, Chrome */
+  background-image: linear-gradient($direction,$baseColor, $toColor);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='$baseColor', EndColorStr='$toColor');   /* IE6â��IE9 */
+}
+ 
+ 
+@mixin transition($property, $duration:0.2s, $function: ease-out){
+     -moz-transition: $property $duration $function;  /* FF3.7+ */
+     -o-transition: $property $duration $function;  /* Opera 10.5 */
+    -webkit-transition: $property $duration $function;  /* Saf3.2+, Chrome */
+    transition: $property $duration $function; 
+}
+ 
+ 
+@mixin transform($scale, $rotate, $trans-x, $trans-y, $skew-x, $skew-y){    
+    -moz-transform: scale($scale) rotate($rotate) translate($trans-x, $trans-y) skew(skew-x, skew-y);
+    -webkit-transform: scale($scale) rotate($rotate) translate($trans-x, $trans-y) skew(skew-x, skew-y);
+    -o-transform: scale($scale) rotate($rotate) translate($trans-x, $trans-y) skew(skew-x, skew-y);
+    -ms-transform: scale($scale) rotate($rotate) translate($trans-x, $trans-y) skew(skew-x, skew-y);
+    transform: scale($scale) rotate($rotate) translate($trans-x, $trans-y) skew(skew-x, skew-y);
+ 
+}
+
+
+
+
+
+
+
+/* 15 - REUSABLE COLUMN SNIPPETS */
+/* ____________________________________________________________________________ */
+
+@mixin col {
+    border:0px solid rgba(0,0,0,0);
+    float:left;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    -moz-background-clip:padding-box !important;
+    -webkit-background-clip:padding-box !important;
+    background-clip:padding-box !important;
+}
+
+@mixin span($num, $gutter_pc, $gutter_px, $padding, $max_columns) {
+    $one_col: (100% - ($gutter_pc * ($max_columns - 1))) / $max_columns;
+    width:($one_col * $num) + ($gutter_pc * ($num - 1));
+    border-left-width:$gutter_px;
+    padding:$padding;
+    margin-left:$gutter_pc;
+}
+
+@mixin span_first {
+    margin-left:0;
+}
+
+
+
+
+
+

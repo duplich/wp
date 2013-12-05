@@ -1,0 +1,1368 @@
+/*
+ * BEGIN INCLUDE FILES
+ */
+ @import "normalize","reusable","inhalt";
+
+/*
+ * END INCLUDE FILES
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================================ */
+/*      SECTION 1      */
+/* ============================================================================ */
+
+
+/* 1.1 - Base Styles */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+
+    /*@viewport,
+    @-ms-viewport{
+        width: auto;
+        zoom: auto;
+    }*/
+
+
+    html,
+    button,
+    input,
+    select,
+    textarea {
+        color: #222;
+
+    }
+
+    html {
+        background-color: $c_bg;
+    }
+
+    body {
+        
+        font-family: $f_sistony;
+        font-size: $f_size_base;
+        line-height: $lh_standard;
+        
+        max-width: 640px;
+        margin-right: auto;
+        margin-left: auto;
+        position: relative;
+        box-shadow: 0px 0px 32px $c_grey_light_ultra;
+    }
+
+    /*
+     * Remove text-shadow in selection highlight: h5bp.com/i
+     * These selection rule sets have to be separate.
+     * Customize the background color to match your design.
+     */
+
+    ::-moz-selection {
+        background: #b3d4fc;
+        text-shadow: none;
+    }
+
+    ::selection {
+        background: #b3d4fc;
+        text-shadow: none;
+    }
+
+    /*
+     * A better looking default horizontal rule
+     */
+
+    hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #ccc;
+        margin: 1em 0;
+        padding: 0;
+    }
+
+    /*
+     * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+     */
+
+    img {
+        vertical-align: middle;
+    }
+
+    /*
+     * Remove default fieldset styles.
+     */
+
+    fieldset {
+        border: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    /*
+     * Allow only vertical resizing of textareas.
+     */
+
+    textarea {
+        resize: vertical;
+    }
+
+    /* 
+     *  Chrome Frame prompt
+     */
+
+    .chromeframe {
+        margin: 0.2em 0;
+        background: #ccc;
+        color: #000;
+        padding: 0.2em 0;
+    }
+
+
+
+/* 1.2 - FORMS AND INPUTS */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+input, textarea {
+
+    border: 1px solid $c_grey_light_extra;
+    background-color: $c_grey_light_ultra;
+    width: 100%;
+    padding: .5em;
+    @include border_box;
+    min-height: 40px;
+
+}
+
+textarea {
+    min-height: 40px*5;
+}
+
+input[type="submit"] {
+    width: 100%;
+}
+
+
+
+
+/* 1.3 - TYPOGRAPHY */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+h1 {
+    @include f_headline( $c_black, bold);
+    font-size: $f_size_19; 
+}
+
+h2 {
+    @include f_headline( $c_black, bold);
+    font-size: $f_size_19; 
+}
+
+h3 {
+    @include f_headline( $c_black, bold);
+    font-size: $f_size_15; 
+}
+
+h4 {
+
+    @include f_headline( $c_black, normal);
+    font-size: $f_size_15; 
+
+}
+
+h5 {
+    @include f_headline( $c_black, bold);
+    font-size: $f_size_13; 
+}
+
+h6 {
+    @include f_headline( $c_black, normal);
+    font-size: $f_size_13; 
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: $lh_heading;
+    margin: $t_margin 0;
+}
+
+
+
+// passsage handling
+p {
+
+    @include f_text ($c_base_font_color);
+    margin-top: $t_margin;
+    margin-bottom: $t_margin;
+    
+
+    // last pessage has greater margin
+    &:last-of-type {
+      margin-bottom: $t_margin_passage; 
+    }
+
+
+    // large marign when <h1-6> follows <p>
+    &+h1, &+h2, &+h3, &+h4, &+h5, &+h6 {
+        margin-top: $t_margin_passage;
+    }
+
+}
+
+
+// zitate
+blockquote {
+
+    @include f_text ($c_grey_dark);
+    font-size: 1.143em; // 16px
+    margin: $t_margin_passage $t_margin_passage*1.5;
+    text-align: center;
+
+
+    &:before {
+        content: "» ";
+    }
+
+    &:after {
+        content: " «";
+    }
+}
+
+
+    
+
+
+
+/* 1.4 - ICONS */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+@import "iconset";
+
+
+@include generate_before_icon_classes( facebook, hack, grouptraining, personaltraining, arrright, arrup, phone, minus, plus, square, arrleft, arrdown, mobile, pc, tool, pencil, mail, letter, place, menu, home, route, vcard );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 1.5 - LINKS AND BUTTONS */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+
+%a-base {
+    //@include transition( color );
+    text-decoration: none;
+}
+
+
+a{
+    @extend %a-base;
+    color: $c_logo_red;
+    //@include transition(color);
+
+    /* &:hover {
+        color: $c_logo_black;
+    } */
+
+    &:active {
+        color: $c_white;
+    }
+
+}
+
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+    text-decoration: none;
+}
+
+
+
+
+/* Link Theme */
+%use-a-stone {
+
+    color: $c_stone_black;
+    text-decoration: none;
+    //@include transition(color);
+
+    &:hover {
+        color: $c_stone_black;
+    }
+
+    &:active {
+        color: $c_white;
+        background-color: $c_logo_red;
+    }
+
+}
+
+
+
+// predefined a styles
+// use it with @extend %a-style-name
+%a-red {
+
+    @extend %a-base;
+    color: $c_logo_red;
+
+    &:hover,
+    &.active,
+    &:active {
+        color: $c_black;
+    } 
+}
+
+
+// predefined a styles
+// use it with @extend %a-style-name
+%a-grey {
+
+    @extend %a-base;
+    color: $c_logo_grey;
+
+    &:hover,
+    &.active,
+    &:active {
+        color: $c_logo_red;
+    } 
+}
+
+
+// predefined a styles
+// use it with @extend %a-style-name
+%a-white {
+    
+    @extend %a-base;
+    color: $c_white;
+
+    &:hover,
+    &.active,
+    &:active {
+        color: $c_logo_red;
+    } 
+}
+
+
+
+// predefined a styles
+// use it with @extend %a-style-name
+%a-black {
+    
+    @extend %a-base;
+    color: $c_black;
+
+    &:hover,
+    &.active,
+    &:active {
+        color: $c_logo_red;
+    } 
+}
+
+
+
+// predefined a styles
+// use it with @extend %a-style-name
+%a-grey-light {
+    
+    @extend %a-base;
+    color: $c_grey_light_extra;
+
+    &.active,
+    &:active {
+        color: $c_logo_red;
+    } 
+
+    } 
+
+
+// predefined a styles
+// use it with @extend %a-style-name
+%a-grey-middle {
+    
+    @extend %a-base;
+    color: $c_grey_middle;
+
+    &.active,
+    &:active {
+        color: $c_logo_red;
+    } 
+
+}   
+
+
+
+// icon for outgoing links 
+// use it with @extend %a-style-name
+.outgoinglink:after,
+%a-outgoing:after {
+        @include set_icon(arrright);
+        font-size: .8em;
+        padding-left: 4px;
+        opacity: 0.35;
+        @include transition(opacity);
+    }
+    
+    .outgoinglink:active:after,
+    %a-outgoing:active:after {
+        opacity: 1;
+    }
+
+
+
+
+
+
+
+
+@import "buttons";
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 1.6 - TABLES */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================================ */
+/*      SECTION 2      */
+/* ============================================================================ */
+
+
+/* 2.1 - HELPER CLASSES */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+@import "helper";
+    
+
+
+
+
+
+
+/* 2.2 - GRID SYSTEM */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+    /*
+    10 Column Grid 0px - Infinity 
+    -----------------------------
+    
+    Span 1:    10.0%
+    Span 2:    20.0%
+    Span 3:    30.0%
+    Span 4:    40.0%
+    Span 5:    50.0%
+    Span 6:    60.0%
+    Span 7:    70.0%
+    Span 8:    80.0%
+    Span 9:    90.0%
+    Span 10:    100%
+    
+    ------------------------------ */    
+  
+    /* .col {
+       @include col;
+    }
+            
+    .col {
+        margin-left:0%;
+        padding:0 0%;
+    } */
+
+    /* --- Gridpak variables ---*/ 
+    $max_columns: 10;
+    $padding: 0 0%;
+    $gutter_px: 0;
+    $gutter_pc: 0%;
+
+
+
+    /* .row .col:first-child {
+        @include span_first;
+    } */
+
+
+    /*
+    Add your semantic classnames in alongside their corresponding spans here. e.g.
+
+    .span_3,
+    .my_semantic_class_name {
+        ...
+    }
+
+    */
+    /* .span_1 {
+        @include span(1, $gutter_pc, $gutter_px, $padding, $max_columns);
+    }
+    .span_2 {
+        @include span(2, $gutter_pc, $gutter_px, $padding, $max_columns);
+    }
+    .span_3 {
+        @include span(3, $gutter_pc, $gutter_px, $padding, $max_columns);
+    }
+    .span_4 {
+        @include span(4, $gutter_pc, $gutter_px, $padding, $max_columns);
+    }
+    .span_5 {
+        @include span(5, $gutter_pc, $gutter_px, $padding, $max_columns);
+    }
+    .span_6 {
+        @include span(6, $gutter_pc, $gutter_px, $padding, $max_columns);
+    }
+    .span_7 {
+        @include span(7, $gutter_pc, $gutter_px, $padding, $max_columns);
+    }
+    .span_8 {
+        @include span(8, $gutter_pc, $gutter_px, $padding, $max_columns);
+    }
+    .span_9 {
+        @include span(9, $gutter_pc, $gutter_px, $padding, $max_columns);
+    }
+    .span_10 {
+        @include span_first;
+        width:100%;
+    } */
+
+
+
+
+
+
+
+
+
+
+
+/* 2.3 - LISTS */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+
+ul, ol, dl {
+    margin: $t_margin_passage 0px;
+    list-style: square;
+}
+
+.no-style {
+    list-style: none;
+}
+
+
+
+
+
+
+/* 2.4 - DARKOVERLAY */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+#darkoverlay {
+    display: none;
+    background-color: $c_black;
+    height: 100%;
+    left: 0px;
+    opacity: 0.7;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================================ */
+/*      SECTION 3      */
+/* ============================================================================ */
+
+
+
+
+/* 3.1 - TOPBAR */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+#topbar {
+    
+    
+    background-color: $c_white;
+    //border-bottom: 1px solid $c_grey_light;
+    display: block;
+    position: relative;
+    width: 100%;
+    z-index: 90;
+
+
+    #topbarlogo {
+        
+        h1,h2 {
+
+            background-image: url( $logo_base64 );
+            float: left;
+            height: $logo_height; 
+            margin: $logo_distance_top 0 0 $span_frame;
+            width: $logo_width;  
+
+        }
+
+    }
+}
+
+
+
+
+
+
+
+
+
+/* 3.2 - NAVIGATION */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+@import "navi";
+
+
+
+/* 3.3 - HEADER */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+@import "breadcrump";
+
+
+// title of the page
+#title {
+
+    margin: $s_plus $span_frame;
+
+    h1, h2 {
+        font-size: $f_size_22;
+        text-align: center;
+    }
+
+    h1, h2, h3, h4 {
+            margin: $t_margin*0.2 0;
+    }
+
+}
+
+
+// header image
+#haederimg {
+
+    margin-top: $s_third;
+    background-color: $c_black;
+
+    img {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+
+    }
+
+}
+
+
+
+
+
+/* 3.4 - FOOTER */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+#footer {
+
+    background-color: $c_stone_light;
+    margin-top: $s_sized;
+
+   .linkarea {
+
+    padding: $s_third 0;
+
+        ul.diverslinks {
+
+            font-size: $f_size_13;
+            list-style: none;
+            padding: $s_near $span_frame 0 $span_frame;
+
+            li {
+                display: inline-block;
+                padding-bottom: $s_half;
+                padding-right: 2%;
+                width: 45%;
+
+                a {
+                    color: $c_logo_grey;
+
+                    &:active {
+                        color: $c_logo_red;
+                    }
+                }
+            }
+        }
+   }
+
+
+   
+
+
+
+   .copyright {
+
+        // be darker
+        background-color: $c_stone_middle;
+        font-size: $f_size_12;
+
+        // arrange links in unstyled list
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: $s_base $span_frame;
+            text-align: center;
+            text-transform: uppercase;
+
+            li {
+                margin-bottom: $s_half;
+
+                &:last-of-type {
+                    margin-bottom: 0px;
+                }
+
+                &.icon:before {
+                    font-size: 1.6em;
+                    vertical-align: -.2em;
+                    padding-right: 8px;
+                }
+            }
+
+            // links black with underline
+            a {
+                color: $c_black;
+                text-decoration: underline;
+
+
+                &:active {
+                    color: $c_logo_red;
+                }
+
+                &:after {
+                    @include set_icon(arrright);
+                    text-decoration: none;
+                }
+            }
+        }
+
+   }
+
+}
+
+
+
+
+
+
+
+
+
+
+/* 3.5 - MODULES */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+    
+    .modularize {
+        
+    }
+
+    
+    %base-frame {
+        margin: $s_middle $span_frame 0 $span_frame;
+    }
+
+
+    /* 3.5.1 - MODULES - Quick Contact */
+    /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+    .quickcontact {
+
+        margin-top: $s_third;
+        padding-top: $s_third;
+
+        //-------------> begin tabs   
+        section.tabs {
+
+            a.tab {
+
+                color: $c_stone_black;
+                cursor: pointer;
+                display: block;
+                float: left;
+                font-size: $f_size_13;
+                text-align: center;
+                text-decoration: none;
+                text-transform: uppercase;
+                width: 33%;
+
+                &.active {
+                    background-color: $c_black;
+                    color: $c_white;
+
+                     div.icon {
+                        color: $c_white;
+                     }
+                }
+
+                &:active {
+                    background-color: $c_logo_red;
+                    color: $c_white;
+
+                     div.icon {
+                        color: $c_white;
+                     }
+                }
+
+
+
+                div.icon {
+
+                    color: $c_logo_red;
+                    font-size: 23px;
+                    height: 35px;
+                    padding-top: 5px;
+                    width: 100%;
+
+                }
+                div.description {
+                    height: 30px;
+                }
+
+                // call icon-font
+                &.wayto div.icon:after {
+                    @include set_icon ("place");
+                    
+                }
+
+                &.callus div.icon:after {
+                    @include set_icon ("phone");
+                }
+
+                &.writeus div.icon:after {
+                    @include set_icon ("letter");
+                }
+
+            }
+        }
+        //-------------> end tabs  
+        
+
+
+        //-------------> begin windows 
+        section.windows {   
+
+            background-color: $c_grey_light;
+            color: $c_white;
+            
+
+            .window {
+
+                width: 100% - 2*$span_frame; 
+                padding: $s_base $span_frame;
+
+                h4 {
+                    font-size: $f_size_15;
+                    font-weight: bold;
+                    //color: $c_logo_grey;
+                }
+
+                p {
+                    font-size: $f_size_15;
+                    font-weight: normal;
+                    text-transform: uppercase;
+                }
+
+                .btn-red,
+                .btn-white {
+                    margin-bottom: 4px;
+                }
+            }
+
+        }
+        //-------------> end windows 
+
+    }
+
+
+
+
+    /* 3.5.2 - MODULES - Catchwords */
+    /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+    .catchwords {
+
+        @extend %base-frame;
+
+        .modul {
+
+            border-top: $border_std;
+            padding: 0.6em 0;
+
+            &:first-of-type {
+                border-top: none;
+            }
+
+            h4 {
+                font-size: $f_size_13;
+                margin: 0.3em 0;
+            }
+
+            p {
+                margin: 0.3em 0;
+            }
+
+        }        
+
+    }
+
+
+    /* 3.5.3 - MODULES - Article */
+    /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+    .article {
+
+        @extend %base-frame;
+
+
+        .modul {
+
+            margin-top: $s_middle;
+
+            h1,h2 {
+            font-weight: normal;
+            }
+
+            h3,h4 {
+                font-weight: normal;
+            }
+
+            h5, h6 {
+                font-weight: normal;
+                text-transform: uppercase;
+                color: $c_logo_grey;
+            }
+
+
+
+            &.dropouttext {
+                border-top: $border_std;
+                border-bottom: $border_std;
+                &+.dropouttext {
+                    border-top: none;
+                    margin: 0 0;
+                }
+
+                .wrapper {
+                    padding-right: 12%;
+                }
+            }
+
+            .plusminus {
+                padding: $s_half 0;
+            }
+
+            .btn-foldin {
+                margin-bottom: $s_half;
+            }
+
+            .subline {
+                font-size: $f_size_17;
+                color: $c_logo_grey;
+                font-weight: normal;
+            }
+
+        }
+
+    }
+
+
+
+    /* 3.5.4 - MODULES - Text */
+    /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+    .tagarea {
+
+        @extend %base-frame;
+        border-bottom: $border_std;
+        border-top: $border_std;
+        padding: $s_near 0;
+
+        .modul {
+
+            h4, div {
+                font-size: $f_size_13;
+                display: inline;
+            }
+
+            h4 {
+                font-weight: bold;
+            }
+            
+        }
+
+        .modul+.modul {
+            margin-top: $s_half;
+        }
+        
+    }
+
+
+
+    /* 3.5.5 - MODULES - Dropouts */
+    /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+    .dropouts {
+
+        header {
+             @extend %base-frame;
+             font-size: $f_size_19;
+        }
+
+        .modul {
+            
+            margin-bottom: 4px;
+
+            // content special color
+            .dropoutcontent {
+                background-color: $c_grey_light;
+                margin-bottom: $s_third;
+                padding: $s_near $span_frame;
+            }
+
+
+            // color behaviour fix for h4
+            .btn-dropouts h4 {
+                margin: 0;
+            }
+            .btn-dropouts.active .btnbody {
+                color: $c_white;
+            }
+
+        }
+
+        .links a {
+            margin-bottom: 4px;
+        }
+
+    }
+
+
+
+
+    /* 3.5.6 - MODULES - Comments */
+    /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+    .commentform {
+
+        .comment-submit {
+            margin: $t_margin_passage 0;
+        }
+
+        .comment-info {
+            margin: $t_margin 0;
+        }
+    }
+
+
+
+    .comment {
+
+        border-bottom: $border_std;
+
+        
+        .name {
+            margin-top: $t_margin_passage;
+        }
+
+        .tagline {
+            color: $c_grey_dark;
+            font-size: $f_size_13;
+        }
+    }
+
+
+
+    /* 3.5.7 - MODULES - Slides */
+    /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+    @import "slide";
+
+
+
+
+
+
+
+    /* 3.5.8 - MODULES - Blog */
+    /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+    .blog {
+
+        width: 100%;
+        margin: 0;
+
+        .blog-article {
+            padding: 0 $span_frame;
+            margin-top: $s_middle;
+            border-right: $border_red;
+
+            img {
+                width: 100%;
+            }
+
+            .date {
+                font-size: $f_size_14;
+                text-transform: uppercase;
+                color: $c_grey_middle;
+                margin-bottom: $s_base;
+            }
+
+            .headline,
+            .summary {
+               padding-right: 5%;
+            }
+
+            .summary {
+                font-size: $f_size_14;
+            }
+
+            .goout {
+                float: right;
+            }
+        }
+
+        
+        .pagination {
+
+            margin-top: $s_sized;
+
+
+
+            ul.pages {
+                padding: 0;
+                text-align: center;
+
+                li {
+
+                    padding: 4px;
+                    display: inline-block;
+
+
+
+                    a {
+                        display: block;
+                        width: 30px;
+                        height: 30px;
+                        line-height: 30px;
+                        font-size: 13px;
+                        color: $c_black;
+                        text-align: center;
+
+                        
+
+                        &.active,
+                        &:active {
+                            background-color: $c_logo_red;
+                            color: $c_white;
+                        } 
+                    }
+                }
+            }
+
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

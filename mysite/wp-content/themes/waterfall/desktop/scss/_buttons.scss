@@ -1,0 +1,694 @@
+/*
+ *  BUTTON BASIC
+ */
+%btn-basic {
+
+    -moz-border-radius:1px;
+    -webkit-border-radius:1px;
+    @include f_special( $c_bg ); 
+    border-radius:1px;
+    cursor:pointer;
+    display: block;
+    font-weight: bold;
+    text-decoration: none;
+
+    @include transition( background-color );
+    
+}
+
+    
+    /*
+     *  BUTTON SIZES
+     */
+
+    .btn {
+
+        @extend %btn-basic;
+        font-size: 15px;
+        padding: ($btn_height - 15px*$lh_standard)/2 $btn_side_padding;
+
+    }
+
+
+    .btn-small {
+
+        @extend %btn-basic;
+        font-size: 13px;
+        padding: ($btn_height_small - 13px*$lh_standard)/2 $btn_side_padding;
+
+    }
+        
+
+    .btn-big {
+        @extend %btn-basic;
+        font-size: 18px;
+        text-transform: uppercase;
+        padding: ($btn_height_big - 18px*$lh_standard)/2 $btn_side_padding;
+    }
+
+
+        
+
+
+
+        /*
+         *  BUTTON CONCEPT
+         *
+         *  NEEDED: 
+         *       Button DOM structure:
+                <a href="" class="btn-color">
+                    <div class="btnbody">Click Me!</div>
+                </a>
+         */
+
+
+        /*
+         *  BUTTON COLORS
+         */
+        //-------------> begin button colors
+            .btn-be-red {
+                //@extend .btn;
+                background-color: $c_logo_red;
+                position: relative;
+                
+                &:hover,
+                &.active {
+                    background-color: $c_black;
+                    color: $c_white;
+                }
+
+                &:active {
+                    background-color: $c_white;
+                    color: $c_black;
+                }
+                
+                .btnbody {
+                    color: $c_white;
+
+                    &:active {
+                        background-color: $c_white;
+                        color: $c_black;
+                    }
+                }
+            }
+
+
+            .btn-be-black {
+                //@extend .btn;
+                background-color: $c_black;
+                color: $c_white;
+                position: relative;
+                
+                &:hover,
+                &.active {
+                    background-color: $c_logo_red;
+                    color: $c_white;
+                }
+
+                &:active {
+                    background-color: $c_white;
+                    color: $c_black;
+                }
+                
+                .btnbody {
+
+                    &:active {
+                        background-color: $c_white;
+                        color: $c_black;
+                    }
+                 }
+            }
+
+
+            .btn-be-white {
+                //@extend .btn;
+                background-color: $c_white;
+                color: $c_black;
+                position: relative;
+                
+                &:hover,
+                &.active {
+                    background-color: $c_logo_red;
+                    color: $c_white;
+                }
+
+                &:active {
+                    background-color: $c_black;
+                    color: $c_white;
+                }
+                
+                .btnbody {
+                    
+                    &:active {
+                        background-color: $c_black;
+                        color: $c_white;
+                    }
+                }
+            }
+
+
+            .btn-be-grey {
+                //@extend .btn-big;
+                background-color: $c_grey_light_ultra;
+                color: $c_black;
+                position: relative;
+                
+                &:hover,
+                &.active {
+                    background-color: $c_logo_red;
+                    color: $c_white;
+                }
+
+                &:active {
+                    background-color: $c_white;
+                    color: $c_black;
+                }
+                
+                .btnbody {
+
+                    &:active {
+                        background-color: $c_white;
+                        color: $c_black;
+                    }
+                }
+            }
+        //-------------> end button colors
+
+
+
+
+            /*
+             *  BUTTON TYPES
+             * 
+             *  DOM: Example
+                
+                <a class="btn-grey" href="#">
+                    <div class="btnbody icon-phone">0911 - 780 799 35</div>
+                </a>
+
+             */
+
+
+
+            .btn-red {
+                @extend .btn;
+                @extend .btn-be-red;
+
+                text-align: center; 
+            }
+
+            .btn-black {
+                @extend .btn;
+                @extend .btn-be-black;
+
+                text-align: center; 
+            }
+
+            .btn-white {
+                @extend .btn;
+                @extend .btn-be-white;
+
+                text-align: center; 
+            }
+
+            .btn-grey {
+                @extend .btn;
+                @extend .btn-be-grey;
+
+                text-align: center;
+            }
+            
+            
+            
+            /*
+             *  PAGINATION BUTTONS
+             * 
+             *  DOM: Example
+                
+                <a href="" class="btn-prev left">
+                    <div class="btnbody">jüngere artikel</div>
+                </a>
+
+                <a href="" class="btn-next right">
+                    <div class="btnbody">ältere artikel</div>
+                </a>
+
+             */
+            .btn-next,
+            .btn-prev {
+                @extend .btn;
+                @extend .btn-be-black;
+
+                .btnbody {
+
+                    &:before,
+                    &:after {
+                        font-size: 1.2em;
+                        vertical-align: -0.2em;
+                        padding: 0 .4em;
+                    }
+                }
+            }
+
+                .btn-prev {
+                    text-align: left;
+                    padding-left: 0.4em;
+                    padding-right: 3em;
+                    .btnbody:before {
+                        @include set_icon(arrleft);
+                    }
+                }
+
+                .btn-next {
+                    text-align: right;
+                    padding-right: 0.4em;
+                    padding-left: 3em;
+                    .btnbody:after {
+                        @include set_icon(arrright);
+                    }
+                }
+
+
+
+
+            // foldin button
+            .btn-foldin {
+                @extend .btn-small;
+                text-align: center;
+                background-color: $c_black;
+                margin: 20px 0 $btn_margin_bottom 0;
+                width: 120px;
+
+                &:before {
+                    @include set_icon("arrup");
+                    font-size: 1.2em;
+                    vertical-align: -1px;
+                    padding-right: 5px;
+                }
+            }
+
+
+            .btn-foldin.light {
+                background-color: $c_grey_light_extra;
+
+                &:active {
+                    background-color: $c_logo_red;
+                    color: $c_white;
+                }
+            }
+
+
+
+
+            
+            
+
+
+            // black buttons for the footer    
+            .btn-footer {
+                
+                @extend .btn;
+                @extend .btn-be-black;
+                margin-bottom: 4px;
+                padding: ($btn_height_big - 13px*$lh_standard)/2 0;
+                width: 98.5%;
+
+                .btnbody {
+                    font-size: 13px;
+                    text-align: right;
+                    padding-left: $span_frame;
+                }
+            }
+
+
+            // btn to go up
+            .btn-gototop {
+
+                // based on black-btn
+                @extend .btn;
+                @extend .btn-be-black;
+                font-size: $f_size_12;
+                text-align: center;
+
+                .icon:after {
+                    @include set_icon(arrup);
+                }
+           }
+
+
+        
+
+           
+
+
+           .btn-dropouts {
+                @extend .btn-big;
+                @extend .btn-be-grey;
+
+                padding-right: $nav_btn_right_padding;
+                padding-left: $span_frame;
+                width: 100% - $span_frame - $nav_btn_right_padding;
+
+                &.active {
+                    @extend .btn-be-black;
+                }
+           }
+
+
+
+           
+
+
+        /*
+         *  BUTTON ICONS
+         */
+        //-------------> begin button icons
+
+
+            /* all style */
+
+
+            /* :before icons */  
+            /* add icons :before with the standard icon-classes like class="icon-name"
+               add the class to the .btnbody
+            */
+                .btnbody:before {
+                    font-size: 1.4em;
+                    padding-right: 6px;
+                    vertical-align: -0.2em;
+                }
+                
+
+                .icon-outgoing {
+
+                    &:after {
+                        @include set_icon(arrright);
+                        font-size: .8em;
+                        padding-left: .18em;
+                    }
+                }
+
+
+            /* :after icons */   
+                .btn-icon-arrright .btnbody{ 
+
+                    padding-right: $nav_btn_right_padding;
+                    &:after {
+                
+                        @include btn_set_icon("arrright");
+                        
+                    }
+                    
+                }
+
+
+            /* plus - minus icons handled with status .active */
+            /*
+             *  NEEDED: 
+             *       Button DOM structure:
+                    <a href="" class="dropouttrigger plusminus">
+                        <div class="btnbody">Click Me!</div>
+                    </a>
+             */  
+            .plusminus {
+                    
+                    //padding: $s_half 0;
+                    cursor: pointer;
+                    position: relative;
+
+                    :after {
+                        @include btn_set_icon (plus);
+                        color: $c_stone_middle;
+                    }
+
+                    &.active :after {
+                        @include btn_set_icon (minus);
+                    }
+
+                    
+                }
+
+        //-------------> end button icons
+
+
+
+/*
+ *  RHOMBUS BTN 
+ *  NEEDED: 
+ *      
+        <a href="" class="btn-rhombus">
+            <span class="openrhombus"></span>
+            <span class="btnbody icon-class">mehr</span>
+            <span class="closerhombus"></span>
+        </a>
+*/
+
+/* Button Rhombus - Base Style */
+.btn-rhombus-base {
+    display: inline-block;
+    white-space: nowrap;
+    height: $btn_height_small;
+    //line-height: $btn_height;
+
+    span {
+        display: block;
+        float: left;
+        height: 32px;
+    }
+
+    .btnbody {
+        font-weight: bold;
+        font-size: $f_size_14;
+        line-height: $btn_height_small;
+        overflow:hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding: 0 4px;
+        @include transition( background-color );
+    }
+    
+    .openrhombus,
+    .closerhombus  {
+        @include transition( border-color );
+        }
+}
+
+
+/* Button Rhombus Color - Grey */
+.btn-rhombuscolor-grey {
+
+    .openrhombus {
+        @include css_triangle_bottom_right( $btn_height_small, $btn_height_small, $c_logo_grey);
+    }
+    .btnbody {
+        background-color: $c_logo_grey;
+        color: $c_white;
+    }
+    .closerhombus {
+        @include css_triangle_top_left ( $btn_height_small, $btn_height_small, $c_logo_grey);
+    }
+
+    
+    &:hover .btnbody {
+        background-color: $c_logo_red;
+    }
+
+    &:hover .openrhombus {
+        border-color: transparent transparent $c_logo_red transparent;
+    }
+
+    &:hover .closerhombus {
+        border-color: $c_logo_red transparent transparent transparent;
+    }
+}
+
+
+/* Button Rhombus Color - Black */
+.btn-rhombuscolor-black {
+
+    .openrhombus {
+        @include css_triangle_bottom_right( $btn_height_small, $btn_height_small, $c_black);
+    }
+    .btnbody {
+        background-color: $c_black;
+        color: $c_white;
+    }
+    .closerhombus {
+        @include css_triangle_top_left ( $btn_height_small, $btn_height_small, $c_black);
+    }
+
+    &:hover .btnbody {
+        background-color: $c_logo_red;
+    }
+
+    &:hover .openrhombus {
+        border-color: transparent transparent $c_logo_red transparent;
+    }
+
+    &:hover .closerhombus {
+        border-color: $c_logo_red transparent transparent transparent;
+    }
+
+    &.active {
+
+
+
+    }
+}
+
+
+
+/* Button Rhombus Color - Red */
+.btn-rhombuscolor-red {
+
+    .openrhombus {
+        @include css_triangle_bottom_right( $btn_height_small, $btn_height_small, $c_logo_red);
+    }
+    .btnbody {
+        background-color: $c_logo_red;
+        color: $c_white;
+    }
+    .closerhombus {
+        @include css_triangle_top_left ( $btn_height_small, $btn_height_small, $c_logo_red);
+    }
+
+    &:hover .btnbody {
+        background-color: $c_black;
+    }
+
+    &:hover .openrhombus {
+        border-color: transparent transparent $c_black transparent;
+    }
+
+    &:hover .closerhombus {
+        border-color: $c_black transparent transparent transparent;
+    }
+
+}
+
+
+// button builder
+.btn-rhombus-grey {
+
+    @extend .btn-rhombus-base;
+    @extend .btn-rhombuscolor-grey;
+
+    &.active {
+        @extend .btn-rhombuscolor-red;
+    }
+
+}
+
+.btn-rhombus-black {
+
+    @extend .btn-rhombus-base;
+    @extend .btn-rhombuscolor-black;
+
+    &.active {
+        @extend .btn-rhombuscolor-red;
+    }
+
+}
+
+
+    
+    .btn-rhombus-outgoing-right {
+
+        @extend .btn-rhombus-black;
+        .btnbody:after {
+            @include set_icon(arrright);
+            color: $c_logo_red;
+            font-size: 1.4em;
+            vertical-align: -0.2em;
+            padding-left: 0.3em;
+        }
+
+        &:hover {
+            .btnbody:after {
+                color: $c_white;
+            }
+        }
+    }
+
+        .btn-rhombus-slide-right {
+
+            @extend .btn-rhombus-red;
+            text-transform: uppercase;
+
+            .btnbody:after {
+                @include set_icon(arrright);
+                font-size: 1.4em;
+                vertical-align: -0.2em;
+                padding-left: 0.3em;
+            }
+
+            &:hover {
+                .btnbody:after {
+                    color: $c_white;
+                }
+            }
+        }
+
+
+    .btn-rhombus-outgoing-left {
+
+        @extend .btn-rhombus-black;
+        .btnbody:before {
+            @include set_icon(arrleft);
+            color: $c_logo_red;
+            font-size: 1.4em;
+            vertical-align: -0.2em;
+            padding-right: 0.3em;
+        }
+
+        &:hover {
+            .btnbody:before {
+                color: $c_white;
+            }
+        }
+
+    }
+
+
+
+.btn-rhombus-red {
+
+    @extend .btn-rhombus-base;
+    @extend .btn-rhombuscolor-red;
+
+    &.active {
+        @extend .btn-rhombuscolor-black;
+    }
+
+}
+    
+
+
+
+
+
+
+/*
+ *  ANGEBOTFINDER BTN Menu
+ *  NEEDED: 
+
+        <a href="" class="btn-angebotfinder-text">
+            Angebot jetzt finden
+        </a>
+*/
+.btn-angebotfinder-text {
+
+    &:before {
+        @include set_icon(tool);
+        font-size: 1.4em;
+        vertical-align: -4px;
+        padding-right: 8px;
+        color: $c_black;
+    }
+
+    &:after {
+        @include set_icon(arrright);
+        font-size: .8em;
+        padding-left: 4px;
+    }
+}

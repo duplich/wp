@@ -1,0 +1,1072 @@
+3.2.7 (Media Mark)
+25e9ba8a74eecc1836b75ce2d688c3dd3e5e481d
+o:Sass::Tree::RootNode
+:@template"q6/*
+ *  BUTTON BASIC
+ */
+%btn-basic {
+
+    -moz-border-radius:1px;
+    -webkit-border-radius:1px;
+    @include f_special( $c_bg ); 
+    border-radius:1px;
+    cursor:pointer;
+    display: block;
+    font-weight: bold;
+    text-decoration: none;
+
+    @include transition( background-color );
+    
+}
+
+    
+    /*
+     *  BUTTON SIZES
+     */
+
+    .btn {
+
+        @extend %btn-basic;
+        font-size: 15px;
+        padding: ($btn_height - 15px*$lh_standard)/2 $btn_side_padding;
+
+    }
+
+
+    .btn-small {
+
+        @extend %btn-basic;
+        font-size: 13px;
+        padding: ($btn_height_small - 13px*$lh_standard)/2 $btn_side_padding;
+
+    }
+        
+
+    .btn-big {
+        @extend %btn-basic;
+        font-size: 18px;
+        text-transform: uppercase;
+        padding: ($btn_height_big - 18px*$lh_standard)/2 $btn_side_padding;
+    }
+
+
+        
+
+
+
+        /*
+         *  BUTTON CONCEPT
+         *
+         *  NEEDED: 
+         *       Button DOM structure:
+         *      <a href="" class="btn-color btn-icon">
+         *          <div class="btnbody">Click Me!</div>
+         *      </a>
+         */
+
+
+        /*
+         *  BUTTON COLORS
+         */
+        //-------------> begin button colors
+            .btn-be-red {
+                //@extend .btn;
+                background-color: $c_logo_red;
+                position: relative;
+                
+                &:hover,
+                &.active {
+                    background-color: $c_black;
+                    color: $c_white;
+                }
+
+                &:active {
+                    background-color: $c_white;
+                    color: $c_black;
+                }
+                
+                .btnbody {
+                    color: $c_white;
+
+                    &:active {
+                        background-color: $c_white;
+                        color: $c_black;
+                    }
+                }
+            }
+
+
+            .btn-be-black {
+                //@extend .btn;
+                background-color: $c_black;
+                color: $c_white;
+                position: relative;
+                
+                &:hover,
+                &.active {
+                    background-color: $c_logo_red;
+                    color: $c_white;
+                }
+
+                &:active {
+                    background-color: $c_white;
+                    color: $c_black;
+                }
+                
+                .btnbody {
+
+                    &:active {
+                        background-color: $c_white;
+                        color: $c_black;
+                    }
+                 }
+            }
+
+
+            .btn-be-white {
+                //@extend .btn;
+                background-color: $c_white;
+                color: $c_black;
+                position: relative;
+                
+                &:hover,
+                &.active {
+                    background-color: $c_logo_red;
+                    color: $c_white;
+                }
+
+                &:active {
+                    background-color: $c_black;
+                    color: $c_white;
+                }
+                
+                .btnbody {
+                    
+                    &:active {
+                        background-color: $c_black;
+                        color: $c_white;
+                    }
+                }
+            }
+
+
+            .btn-be-grey {
+                //@extend .btn-big;
+                background-color: $c_grey_light_ultra;
+                color: $c_black;
+                position: relative;
+                
+                &:hover,
+                &.active {
+                    background-color: $c_logo_red;
+                    color: $c_white;
+                }
+
+                &:active {
+                    background-color: $c_white;
+                    color: $c_black;
+                }
+                
+                .btnbody {
+
+                    &:active {
+                        background-color: $c_white;
+                        color: $c_black;
+                    }
+                }
+            }
+        //-------------> end button colors
+
+
+
+
+            /*
+             *  BUTTON TYPES
+             * 
+             *  DOM: Example
+                
+                <a class="btn-grey" href="#">
+                    <div class="btnbody icon-phone">0911 - 780 799 35</div>
+                </a>
+
+             */
+
+
+
+            .btn-red {
+                @extend .btn;
+                @extend .btn-be-red;
+
+                text-align: center; 
+            }
+
+            .btn-black {
+                @extend .btn;
+                @extend .btn-be-black;
+
+                text-align: center; 
+            }
+
+            .btn-white {
+                @extend .btn;
+                @extend .btn-be-white;
+
+                text-align: center; 
+            }
+
+            .btn-grey {
+                @extend .btn;
+                @extend .btn-be-grey;
+
+                text-align: center;
+            }
+
+
+
+
+            // foldin button
+            .btn-foldin {
+                @extend .btn-small;
+                text-align: center;
+                background-color: $c_black;
+                margin: 20px 0 $btn_margin_bottom 0;
+                width: 120px;
+
+                &:before {
+                    @include set_icon("arrup");
+                    font-size: 1.2em;
+                    vertical-align: -1px;
+                    padding-right: 5px;
+                }
+            }
+
+
+            .btn-foldin.light {
+                background-color: $c_grey_light_extra;
+
+                &:active {
+                    background-color: $c_logo_red;
+                    color: $c_white;
+                }
+            }
+
+
+
+
+            
+            
+
+
+            // black buttons for the footer    
+            .btn-footer {
+                
+                @extend .btn;
+                @extend .btn-be-black;
+                margin-bottom: 4px;
+                padding: ($btn_height_big - 13px*$lh_standard)/2 0;
+                width: 98.5%;
+
+                .btnbody {
+                    font-size: 13px;
+                    text-align: right;
+                    padding-left: $span_frame;
+                }
+            }
+
+
+            // btn to go up
+            .btn-gototop {
+
+                // based on black-btn
+                @extend .btn;
+                @extend .btn-be-black;
+                font-size: $f_size_12;
+                text-align: center;
+
+                .icon:after {
+                    @include set_icon(arrup);
+                }
+           }
+
+
+        
+
+           
+
+
+           .btn-dropouts {
+                @extend .btn-big;
+                @extend .btn-be-grey;
+
+                padding-right: $nav_btn_right_padding;
+                padding-left: $span_frame;
+                width: 100% - $span_frame - $nav_btn_right_padding;
+
+                &.active {
+                    @extend .btn-be-black;
+                }
+           }
+
+
+
+           
+
+
+        /*
+         *  BUTTON ICONS
+         */
+        //-------------> begin button icons
+
+
+            /* all style */
+
+
+            /* :before icons */  
+            /* add icons :before with the standard icon-classes like class="icon-name"
+               add the class to the .btnbody
+            */
+                .btnbody:before {
+                    font-size: 1.4em;
+                    padding-right: 6px;
+                    vertical-align: -0.2em;
+                }
+                
+
+                .icon-outgoing {
+
+                    &:after {
+                        @include set_icon(arrright);
+                        font-size: .8em;
+                        padding-left: .18em;
+                    }
+                }
+
+
+            /* :after icons */   
+                .btn-icon-arrright .btnbody{ 
+
+                    padding-right: $nav_btn_right_padding;
+                    &:after {
+                
+                        @include btn_set_icon("arrright");
+                        
+                    }
+                    
+                }
+
+
+            /* plus - minus icons handled with status .active */
+            /*
+             *  NEEDED: 
+             *       Button DOM structure:
+                    <a href="" class="dropouttrigger plusminus">
+                        <div class="btnbody">Click Me!</div>
+                    </a>
+             */  
+            .plusminus {
+                    
+                    //padding: $s_half 0;
+                    cursor: pointer;
+                    position: relative;
+
+                    :after {
+                        @include btn_set_icon (plus);
+                        color: $c_stone_middle;
+                    }
+
+                    &.active :after {
+                        @include btn_set_icon (minus);
+                    }
+
+                    
+                }
+
+        //-------------> end button icons
+
+
+
+/*
+ *  RHOMBUS BTN 
+ *  NEEDED: 
+ *      
+        <a href="" class="btn-rhombus">
+            <span class="openrhombus"></span>
+            <span class="btnbody icon-class">mehr</span>
+            <span class="closerhombus"></span>
+        </a>
+*/
+
+/* Button Rhombus - Base Style */
+.btn-rhombus-base {
+    display: inline-block;
+    white-space: nowrap;
+    height: $btn_height_small;
+    //line-height: $btn_height;
+
+    span {
+        display: block;
+        float: left;
+        height: 32px;
+    }
+
+    .btnbody {
+        font-weight: bold;
+        font-size: $f_size_14;
+        line-height: $btn_height_small;
+        overflow:hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding: 0 4px;
+        @include transition( background-color );
+    }
+    
+    .openrhombus,
+    .closerhombus  {
+        @include transition( border-color );
+        }
+}
+
+
+/* Button Rhombus Color - Grey */
+.btn-rhombuscolor-grey {
+
+    .openrhombus {
+        @include css_triangle_bottom_right( $btn_height_small, $btn_height_small, $c_logo_grey);
+    }
+    .btnbody {
+        background-color: $c_logo_grey;
+        color: $c_white;
+    }
+    .closerhombus {
+        @include css_triangle_top_left ( $btn_height_small, $btn_height_small, $c_logo_grey);
+    }
+
+    
+    &:hover .btnbody {
+        background-color: $c_logo_red;
+    }
+
+    &:hover .openrhombus {
+        border-color: transparent transparent $c_logo_red transparent;
+    }
+
+    &:hover .closerhombus {
+        border-color: $c_logo_red transparent transparent transparent;
+    }
+}
+
+
+/* Button Rhombus Color - Black */
+.btn-rhombuscolor-black {
+
+    .openrhombus {
+        @include css_triangle_bottom_right( $btn_height_small, $btn_height_small, $c_black);
+    }
+    .btnbody {
+        background-color: $c_black;
+        color: $c_white;
+    }
+    .closerhombus {
+        @include css_triangle_top_left ( $btn_height_small, $btn_height_small, $c_black);
+    }
+
+    &:hover .btnbody {
+        background-color: $c_logo_red;
+    }
+
+    &:hover .openrhombus {
+        border-color: transparent transparent $c_logo_red transparent;
+    }
+
+    &:hover .closerhombus {
+        border-color: $c_logo_red transparent transparent transparent;
+    }
+
+    &.active {
+
+
+
+    }
+}
+
+
+
+/* Button Rhombus Color - Red */
+.btn-rhombuscolor-red {
+
+    .openrhombus {
+        @include css_triangle_bottom_right( $btn_height_small, $btn_height_small, $c_logo_red);
+    }
+    .btnbody {
+        background-color: $c_logo_red;
+        color: $c_white;
+    }
+    .closerhombus {
+        @include css_triangle_top_left ( $btn_height_small, $btn_height_small, $c_logo_red);
+    }
+
+    &:hover .btnbody {
+        background-color: $c_black;
+    }
+
+    &:hover .openrhombus {
+        border-color: transparent transparent $c_black transparent;
+    }
+
+    &:hover .closerhombus {
+        border-color: $c_black transparent transparent transparent;
+    }
+
+}
+
+
+// button builder
+.btn-rhombus-grey {
+
+    @extend .btn-rhombus-base;
+    @extend .btn-rhombuscolor-grey;
+
+    &.active {
+        @extend .btn-rhombuscolor-red;
+    }
+
+}
+
+.btn-rhombus-black {
+
+    @extend .btn-rhombus-base;
+    @extend .btn-rhombuscolor-black;
+
+    &.active {
+        @extend .btn-rhombuscolor-red;
+    }
+
+}
+
+
+    
+    .btn-rhombus-outgoing-right {
+
+        @extend .btn-rhombus-black;
+        .btnbody:after {
+            @include set_icon(arrright);
+            color: $c_logo_red;
+            font-size: 1.4em;
+            vertical-align: -0.2em;
+            padding-left: 0.3em;
+        }
+
+        &:hover {
+            .btnbody:after {
+                color: $c_white;
+            }
+        }
+    }
+
+        .btn-rhombus-slide-right {
+
+            @extend .btn-rhombus-red;
+            text-transform: uppercase;
+
+            .btnbody:after {
+                @include set_icon(arrright);
+                font-size: 1.4em;
+                vertical-align: -0.2em;
+                padding-left: 0.3em;
+            }
+
+            &:hover {
+                .btnbody:after {
+                    color: $c_white;
+                }
+            }
+        }
+
+
+    .btn-rhombus-outgoing-left {
+
+        @extend .btn-rhombus-black;
+        .btnbody:before {
+            @include set_icon(arrleft);
+            color: $c_logo_red;
+            font-size: 1.4em;
+            vertical-align: -0.2em;
+            padding-right: 0.3em;
+        }
+
+        &:hover {
+            .btnbody:before {
+                color: $c_white;
+            }
+        }
+
+    }
+
+
+
+.btn-rhombus-red {
+
+    @extend .btn-rhombus-base;
+    @extend .btn-rhombuscolor-red;
+
+    &.active {
+        @extend .btn-rhombuscolor-black;
+    }
+
+}
+    
+
+
+
+
+
+
+/*
+ *  ANGEBOTFINDER BTN Menu
+ *  NEEDED: 
+
+        <a href="" class="btn-angebotfinder-text">
+            Angebot jetzt finden
+        </a>
+*/
+.btn-angebotfinder-text {
+
+    &:before {
+        @include set_icon(tool);
+        font-size: 1.4em;
+        vertical-align: -4px;
+        padding-right: 8px;
+        color: $c_black;
+    }
+
+    &:after {
+        @include set_icon(arrright);
+        font-size: .8em;
+        padding-left: 4px;
+    }
+}:@children[?o:Sass::Tree::CommentNode
+:
+@type:normal;[ :@value["/*
+ *  BUTTON BASIC
+ */:@options{ :
+@lineio:Sass::Tree::RuleNode:
+@tabsi ;[o:Sass::Tree::PropNode;i :
+@name["-moz-border-radius;[ ;o:Sass::Script::String;	:identifier;"1px;@;@;i:@prop_syntax:newo;;i ;["-webkit-border-radius;[ ;o;;	;;"1px;@;@;i;;o:Sass::Tree::MixinNode;"f_special;[ ;@:@keywords{ ;i:@splat0:
+@args[o:Sass::Script::Variable	;"	c_bg:@underscored_name"	c_bg;@;io;;i ;["border-radius;[ ;o;;	;;"1px;@;@;i;;o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;i;;o;;i ;["display;[ ;o;;	;;"
+block;@;@;i;;o;;i ;["font-weight;[ ;o;;	;;"	bold;@;@;i;;o;;i ;["text-decoration;[ ;o;;	;;"	none;@;@;i;;o;;"transition;[ ;@;{ ;i;0;[o;	;	;;"background-color;@;i;@:
+@rule["%btn-basic;i	:@parsed_ruleso:"Sass::Selector::CommaSequence:@members[o:Sass::Selector::Sequence;[o:#Sass::Selector::SimpleSequence
+;[o: Sass::Selector::Placeholder;["btn-basic:@filename" ;i	;#@S:@sourceso:Set:
+@hash{ :@subject0;i	;#@S;i	:@has_childrenTo;
+;	;
+;[ ;["/*
+ *  BUTTON SIZES
+ */;@;io;;i ;[o:Sass::Tree::ExtendNode
+;[ ;@:@selector["%"btn-basic;i:@optionalFo;;i ;["font-size;[ ;o;;	;;"	15px;@;@;i ;;o;;i ;["padding;[ ;o:Sass::Script::List	;[o:Sass::Script::Operation
+;@:@operand2o:Sass::Script::Number:@numerator_units[ ;i;@:@original"2;i!:@denominator_units[ ;i!:@operand1o;-
+;@;.o;-
+;@;.o;	;"lh_standard;"lh_standard;@;i!;i!;3o;/;0["px;i;@;1"	15px;i!;2[ :@operator:
+times;i!;3o;	;"btn_height;"btn_height;@;i!;4:
+minus;4:divo;	;"btn_side_padding;"btn_side_padding;@;i!;@;i!:@separator:
+space;@;i!;;;@;["	.btn;i;o;;[o; ;[o;!
+;[o:Sass::Selector::Class;["btn;#" ;i;#@à;$o;%;&{ ;'0;i;#@à;i;(To;;i ;[o;)
+;[ ;@;*["%"btn-basic;i(;+Fo;;i ;["font-size;[ ;o;;	;;"	13px;@;@;i);;o;;i ;["padding;[ ;o;,	;[o;-
+;@;.o;/;0[ ;i;@;1"2;i*;2@q;i*;3o;-
+;@;.o;-
+;@;.o;	;"lh_standard;"lh_standard;@;i*;i*;3o;/;0["px;i;@;1"	13px;i*;2[ ;4;5;i*;3o;	;"btn_height_small;"btn_height_small;@;i*;4;6;4;7o;	;"btn_side_padding;"btn_side_padding;@;i*;@;i*;8;9;@;i*;;;@;[".btn-small;i&;o;;[o; ;[o;!
+;[o;:;["btn-small;#" ;i&;#@Ω;$o;%;&{ ;'0;i&;#@Ω;i&;(To;;i ;[	o;)
+;[ ;@;*["%"btn-basic;i0;+Fo;;i ;["font-size;[ ;o;;	;;"	18px;@;@;i1;;o;;i ;["text-transform;[ ;o;;	;;"uppercase;@;@;i2;;o;;i ;["padding;[ ;o;,	;[o;-
+;@;.o;/;0[ ;i;@;1"2;i3;2@q;i3;3o;-
+;@;.o;-
+;@;.o;	;"lh_standard;"lh_standard;@;i3;i3;3o;/;0["px;i;@;1"	18px;i3;2[ ;4;5;i3;3o;	;"btn_height_big;"btn_height_big;@;i3;4;6;4;7o;	;"btn_side_padding;"btn_side_padding;@;i3;@;i3;8;9;@;i3;;;@;[".btn-big;i/;o;;[o; ;[o;!
+;[o;:;["btn-big;#" ;i/;#@¯;$o;%;&{ ;'0;i/;#@¯;i/;(To;
+;	;
+;[ ;["µ/*
+ *  BUTTON CONCEPT
+ *
+ *  NEEDED: 
+ *       Button DOM structure:
+ *      <a href="" class="btn-color btn-icon">
+ *          <div class="btnbody">Click Me!</div>
+ *      </a>
+ */;@;i;o;
+;	;
+;[ ;["/*
+ *  BUTTON COLORS
+ */;@;iFo;
+;	:silent;[ ;[",/*-------------> begin button colors */;@;iIo;;i ;[o;
+;	;;;[ ;["/*@extend .btn; */;@;iKo;;i ;["background-color;[ ;o;	;"c_logo_red;"c_logo_red;@;iL;@;iL;;o;;i ;["position;[ ;o;;	;;"relative;@;@;iM;;o;;i ;[o;;i ;["background-color;[ ;o;	;"c_black;"c_black;@;iQ;@;iQ;;o;;i ;["
+color;[ ;o;	;"c_white;"c_white;@;iR;@;iR;;;@;["&&:hover,
+                &.active;iP;o;;[o; ;[o;!
+;[o:Sass::Selector::Parent;#" ;iPo:Sass::Selector::Pseudo
+;["
+hover;	:
+class;#@3;iP:	@arg0;#@3;$o;%;&{ ;'0;iPo; ;["
+o;!
+;[o;<;#@3;iPo;:;["active;#@3;iP;#@3;$o;%;&{ ;'0;iP;#@3;iP;(To;;i ;[o;;i ;["background-color;[ ;o;	;"c_white;"c_white;@;iV;@;iV;;o;;i ;["
+color;[ ;o;	;"c_black;"c_black;@;iW;@;iW;;;@;["&:active;iU;o;;[o; ;[o;!
+;[o;<;#" ;iUo;=
+;["active;	;>;#@];iU;?0;#@];$o;%;&{ ;'0;iU;#@];iU;(To;;i ;[o;;i ;["
+color;[ ;o;	;"c_white;"c_white;@;i[;@;i[;;o;;i ;[o;;i ;["background-color;[ ;o;	;"c_white;"c_white;@;i^;@;i^;;o;;i ;["
+color;[ ;o;	;"c_black;"c_black;@;i_;@;i_;;;@;["&:active;i];o;;[o; ;[o;!
+;[o;<;#" ;i]o;=
+;["active;	;>;#@Ö;i];?0;#@Ö;$o;%;&{ ;'0;i];#@Ö;i];(T;@;[".btnbody;iZ;o;;[o; ;[o;!
+;[o;:;["btnbody;#" ;iZ;#@ñ;$o;%;&{ ;'0;iZ;#@ñ;iZ;(T;@;[".btn-be-red;iJ;o;;[o; ;[o;!
+;[o;:;["btn-be-red;#" ;iJ;#@§;$o;%;&{ ;'0;iJ;#@§;iJ;(To;;i ;[o;
+;	;;;[ ;["/*@extend .btn; */;@;ifo;;i ;["background-color;[ ;o;	;"c_black;"c_black;@;ig;@;ig;;o;;i ;["
+color;[ ;o;	;"c_white;"c_white;@;ih;@;ih;;o;;i ;["position;[ ;o;;	;;"relative;@;@;ii;;o;;i ;[o;;i ;["background-color;[ ;o;	;"c_logo_red;"c_logo_red;@;im;@;im;;o;;i ;["
+color;[ ;o;	;"c_white;"c_white;@;in;@;in;;;@;["&&:hover,
+                &.active;il;o;;[o; ;[o;!
+;[o;<;#" ;ilo;=
+;["
+hover;	;>;#@⁄;il;?0;#@⁄;$o;%;&{ ;'0;ilo; ;["
+o;!
+;[o;<;#@⁄;ilo;:;["active;#@⁄;il;#@⁄;$o;%;&{ ;'0;il;#@⁄;il;(To;;i ;[o;;i ;["background-color;[ ;o;	;"c_white;"c_white;@;ir;@;ir;;o;;i ;["
+color;[ ;o;	;"c_black;"c_black;@;is;@;is;;;@;["&:active;iq;o;;[o; ;[o;!
+;[o;<;#" ;iqo;=
+;["active;	;>;#@;iq;?0;#@;$o;%;&{ ;'0;iq;#@;iq;(To;;i ;[o;;i ;[o;;i ;["background-color;[ ;o;	;"c_white;"c_white;@;iy;@;iy;;o;;i ;["
+color;[ ;o;	;"c_black;"c_black;@;iz;@;iz;;;@;["&:active;ix;o;;[o; ;[o;!
+;[o;<;#" ;ixo;=
+;["active;	;>;#@%;ix;?0;#@%;$o;%;&{ ;'0;ix;#@%;ix;(T;@;[".btnbody;iv;o;;[o; ;[o;!
+;[o;:;["btnbody;#" ;iv;#@6;$o;%;&{ ;'0;iv;#@6;iv;(T;@;[".btn-be-black;ie;o;;[o; ;[o;!
+;[o;:;["btn-be-black;#" ;ie;#@D;$o;%;&{ ;'0;ie;#@D;ie;(To;;i ;[o;
+;	;;;[ ;["/*@extend .btn; */;@;i|o;;i ;["background-color;[ ;o;	;"c_white;"c_white;@;i};@;i};;o;;i ;["
+color;[ ;o;	;"c_black;"c_black;@;i~;@;i~;;o;;i ;["position;[ ;o;;	;;"relative;@;@;i;;o;;i ;[o;;i ;["background-color;[ ;o;	;"c_logo_red;"c_logo_red;@;iÉ;@;iÉ;;o;;i ;["
+color;[ ;o;	;"c_white;"c_white;@;iÑ;@;iÑ;;;@;["&&:hover,
+                &.active;iÇ;o;;[o; ;[o;!
+;[o;<;#" ;iÇo;=
+;["
+hover;	;>;#@z;iÇ;?0;#@z;$o;%;&{ ;'0;iÇo; ;["
+o;!
+;[o;<;#@z;iÇo;:;["active;#@z;iÇ;#@z;$o;%;&{ ;'0;iÇ;#@z;iÇ;(To;;i ;[o;;i ;["background-color;[ ;o;	;"c_black;"c_black;@;ià;@;ià;;o;;i ;["
+color;[ ;o;	;"c_white;"c_white;@;iâ;@;iâ;;;@;["&:active;iá;o;;[o; ;[o;!
+;[o;<;#" ;iáo;=
+;["active;	;>;#@§;iá;?0;#@§;$o;%;&{ ;'0;iá;#@§;iá;(To;;i ;[o;;i ;[o;;i ;["background-color;[ ;o;	;"c_black;"c_black;@;iè;@;iè;;o;;i ;["
+color;[ ;o;	;"c_white;"c_white;@;iê;@;iê;;;@;["&:active;ié;o;;[o; ;[o;!
+;[o;<;#" ;iéo;=
+;["active;	;>;#@≈;ié;?0;#@≈;$o;%;&{ ;'0;ié;#@≈;ié;(T;@;[".btnbody;iå;o;;[o; ;[o;!
+;[o;:;["btnbody;#" ;iå;#@÷;$o;%;&{ ;'0;iå;#@÷;iå;(T;@;[".btn-be-white;i{;o;;[o; ;[o;!
+;[o;:;["btn-be-white;#" ;i{;#@‰;$o;%;&{ ;'0;i{;#@‰;i{;(To;;i ;[o;
+;	;;;[ ;["/*@extend .btn-big; */;@;ióo;;i ;["background-color;[ ;o;	;"c_grey_light_ultra;"c_grey_light_ultra;@;iò;@;iò;;o;;i ;["
+color;[ ;o;	;"c_black;"c_black;@;iô;@;iô;;o;;i ;["position;[ ;o;;	;;"relative;@;@;iö;;o;;i ;[o;;i ;["background-color;[ ;o;	;"c_logo_red;"c_logo_red;@;iû;@;iû;;o;;i ;["
+color;[ ;o;	;"c_white;"c_white;@;iü;@;iü;;;@;["&&:hover,
+                &.active;iù;o;;[o; ;[o;!
+;[o;<;#" ;iùo;=
+;["
+hover;	;>;#@;iù;?0;#@;$o;%;&{ ;'0;iùo; ;["
+o;!
+;[o;<;#@;iùo;:;["active;#@;iù;#@;$o;%;&{ ;'0;iù;#@;iù;(To;;i ;[o;;i ;["background-color;[ ;o;	;"c_white;"c_white;@;i£;@;i£;;o;;i ;["
+color;[ ;o;	;"c_black;"c_black;@;i§;@;i§;;;@;["&:active;i¢;o;;[o; ;[o;!
+;[o;<;#" ;i¢o;=
+;["active;	;>;#@D;i¢;?0;#@D;$o;%;&{ ;'0;i¢;#@D;i¢;(To;;i ;[o;;i ;[o;;i ;["background-color;[ ;o;	;"c_white;"c_white;@;i™;@;i™;;o;;i ;["
+color;[ ;o;	;"c_black;"c_black;@;i´;@;i´;;;@;["&:active;i©;o;;[o; ;[o;!
+;[o;<;#" ;i©o;=
+;["active;	;>;#@e;i©;?0;#@e;$o;%;&{ ;'0;i©;#@e;i©;(T;@;[".btnbody;iß;o;;[o; ;[o;!
+;[o;:;["btnbody;#" ;iß;#@v;$o;%;&{ ;'0;iß;#@v;iß;(T;@;[".btn-be-grey;iñ;o;;[o; ;[o;!
+;[o;:;["btn-be-grey;#" ;iñ;#@Ñ;$o;%;&{ ;'0;iñ;#@Ñ;iñ;(To;
+;	;;;[ ;["*/*-------------> end button colors */;@;iØo;
+;	;
+;[ ;["	            /*
+             *  BUTTON TYPES
+             * 
+             *  DOM: Example
+                
+                <a class="btn-grey" href="#">
+                    <div class="btnbody icon-phone">0911 - 780 799 35</div>
+                </a>
+
+             */;@;i¥o;;i ;[o;)
+;[ ;@;*["."btn;i¬;+Fo;)
+;[ ;@;*["."btn-be-red;i√;+Fo;;i ;["text-align;[ ;o;;	;;"center;@;@;i≈;;;@;[".btn-red;i¡;o;;[o; ;[o;!
+;[o;:;["btn-red;#" ;i¡;#@¨;$o;%;&{ ;'0;i¡;#@¨;i¡;(To;;i ;[o;)
+;[ ;@;*["."btn;i…;+Fo;)
+;[ ;@;*["."btn-be-black;i ;+Fo;;i ;["text-align;[ ;o;;	;;"center;@;@;iÃ;;;@;[".btn-black;i»;o;;[o; ;[o;!
+;[o;:;["btn-black;#" ;i»;#@Ã;$o;%;&{ ;'0;i»;#@Ã;i»;(To;;i ;[o;)
+;[ ;@;*["."btn;i–;+Fo;)
+;[ ;@;*["."btn-be-white;i—;+Fo;;i ;["text-align;[ ;o;;	;;"center;@;@;i”;;;@;[".btn-white;iœ;o;;[o; ;[o;!
+;[o;:;["btn-white;#" ;iœ;#@Ï;$o;%;&{ ;'0;iœ;#@Ï;iœ;(To;;i ;[o;)
+;[ ;@;*["."btn;i◊;+Fo;)
+;[ ;@;*["."btn-be-grey;iÿ;+Fo;;i ;["text-align;[ ;o;;	;;"center;@;@;i⁄;;;@;[".btn-grey;i÷;o;;[o; ;[o;!
+;[o;:;["btn-grey;#" ;i÷;#@;$o;%;&{ ;'0;i÷;#@;i÷;(To;
+;	;;;[ ;["/* foldin button */;@;i‡o;;i ;[o;)
+;[ ;@;*["."btn-small;i‚;+Fo;;i ;["text-align;[ ;o;;	;;"center;@;@;i„;;o;;i ;["background-color;[ ;o;	;"c_black;"c_black;@;i‰;@;i‰;;o;;i ;["margin;[ ;o;,	;[	o;/;0["px;i;@;1"	20px;iÂ;2[ o;/;0[ ;i ;@;1"0;iÂ;2@qo;	;"btn_margin_bottom;"btn_margin_bottom;@;iÂo;/;0[ ;i ;@;1"0;iÂ;2@q;@;iÂ;8;9;@;iÂ;;o;;i ;["
+width;[ ;o;;	;;"
+120px;@;@;iÊ;;o;;i ;[	o;;"set_icon;[ ;@;{ ;iÈ;0;[o;	;	:string;"
+arrup;@;iÈo;;i ;["font-size;[ ;o;;	;;"
+1.2em;@;@;iÍ;;o;;i ;["vertical-align;[ ;o;;	;;"	-1px;@;@;iÎ;;o;;i ;["padding-right;[ ;o;;	;;"5px;@;@;iÏ;;;@;["&:before;iË;o;;[o; ;[o;!
+;[o;<;#" ;iËo;=
+;["before;	;>;#@e;iË;?0;#@e;$o;%;&{ ;'0;iË;#@e;iË;(T;@;[".btn-foldin;i·;o;;[o; ;[o;!
+;[o;:;["btn-foldin;#" ;i·;#@v;$o;%;&{ ;'0;i·;#@v;i·;(To;;i ;[o;;i ;["background-color;[ ;o;	;"c_grey_light_extra;"c_grey_light_extra;@;iÚ;@;iÚ;;o;;i ;[o;;i ;["background-color;[ ;o;	;"c_logo_red;"c_logo_red;@;iı;@;iı;;o;;i ;["
+color;[ ;o;	;"c_white;"c_white;@;iˆ;@;iˆ;;;@;["&:active;iÙ;o;;[o; ;[o;!
+;[o;<;#" ;iÙo;=
+;["active;	;>;#@õ;iÙ;?0;#@õ;$o;%;&{ ;'0;iÙ;#@õ;iÙ;(T;@;[".btn-foldin.light;iÒ;o;;[o; ;[o;!
+;[o;:;["btn-foldin;#" ;iÒo;:;["
+light;#@¨;iÒ;#@¨;$o;%;&{ ;'0;iÒ;#@¨;iÒ;(To;
+;	;;;[ ;["+/* black buttons for the footer     */;@;io;;i ;[o;)
+;[ ;@;*["."btn;i;+Fo;)
+;[ ;@;*["."btn-be-black;i;+Fo;;i ;["margin-bottom;[ ;o;;	;;"4px;@;@;i;;o;;i ;["padding;[ ;o;,	;[o;-
+;@;.o;/;0[ ;i;@;1"2;i;2@q;i;3o;-
+;@;.o;-
+;@;.o;	;"lh_standard;"lh_standard;@;i;i;3o;/;0["px;i;@;1"	13px;i;2[ ;4;5;i;3o;	;"btn_height_big;"btn_height_big;@;i;4;6;4;7o;/;0[ ;i ;@;1"0;i;2@q;@;i;8;9;@;i;;o;;i ;["
+width;[ ;o;;	;;"
+98.5%;@;@;i;;o;;i ;[o;;i ;["font-size;[ ;o;;	;;"	13px;@;@;i;;o;;i ;["text-align;[ ;o;;	;;"
+right;@;@;i;;o;;i ;["padding-left;[ ;o;	;"span_frame;"span_frame;@;i;@;i;;;@;[".btnbody;i
+;o;;[o; ;[o;!
+;[o;:;["btnbody;#" ;i
+;#@;$o;%;&{ ;'0;i
+;#@;i
+;(T;@;[".btn-footer;i;o;;[o; ;[o;!
+;[o;:;["btn-footer;#" ;i;#@;$o;%;&{ ;'0;i;#@;i;(To;
+;	;;;[ ;["/* btn to go up */;@;io;;i ;[o;
+;	;;;[ ;["/* based on black-btn */;@;io;)
+;[ ;@;*["."btn;i;+Fo;)
+;[ ;@;*["."btn-be-black;i;+Fo;;i ;["font-size;[ ;o;	;"f_size_12;"f_size_12;@;i;@;i;;o;;i ;["text-align;[ ;o;;	;;"center;@;@;i;;o;;i ;[o;;"set_icon;[ ;@;{ ;i;0;[o;	;	;;"
+arrup;@;i;@;[".icon:after;i;o;;[o; ;[o;!
+;[o;:;["	icon;#" ;io;=
+;["
+after;	;>;#@N;i;?0;#@N;$o;%;&{ ;'0;i;#@N;i;(T;@;[".btn-gototop;i;o;;[o; ;[o;!
+;[o;:;["btn-gototop;#" ;i;#@_;$o;%;&{ ;'0;i;#@_;i;(To;;i ;[o;)
+;[ ;@;*["."btn-big;i';+Fo;)
+;[ ;@;*["."btn-be-grey;i(;+Fo;;i ;["padding-right;[ ;o;	;"nav_btn_right_padding;"nav_btn_right_padding;@;i*;@;i*;;o;;i ;["padding-left;[ ;o;	;"span_frame;"span_frame;@;i+;@;i+;;o;;i ;["
+width;[ ;o;-
+;@;.o;	;"nav_btn_right_padding;"nav_btn_right_padding;@;i,;i,;3o;-
+;@;.o;	;"span_frame;"span_frame;@;i,;i,;3o;/;0["%;ii;@;1"	100%;i,;2[ ;4;6;4;6;@;i,;;o;;i ;[o;)
+;[ ;@;*["."btn-be-black;i/;+F;@;["&.active;i.;o;;[o; ;[o;!
+;[o;<;#" ;i.o;:;["active;#@ù;i.;#@ù;$o;%;&{ ;'0;i.;#@ù;i.;(T;@;[".btn-dropouts;i&;o;;[o; ;[o;!
+;[o;:;["btn-dropouts;#" ;i&;#@Æ;$o;%;&{ ;'0;i&;#@Æ;i&;(To;
+;	;
+;[ ;["/*
+ *  BUTTON ICONS
+ */;@;i8o;
+;	;;;[ ;["+/*-------------> begin button icons */;@;i;o;
+;	;
+;[ ;["/* all style */;@;i>o;
+;	;
+;[ ;["/* :before icons */;@;iAo;
+;	;
+;[ ;["s/* add icons :before with the standard icon-classes like class="icon-name"
+   add the class to the .btnbody
+*/;@;iBo;;i ;[o;;i ;["font-size;[ ;o;;	;;"
+1.4em;@;@;iF;;o;;i ;["padding-right;[ ;o;;	;;"6px;@;@;iG;;o;;i ;["vertical-align;[ ;o;;	;;"-0.2em;@;@;iH;;;@;[".btnbody:before;iE;o;;[o; ;[o;!
+;[o;:;["btnbody;#" ;iEo;=
+;["before;	;>;#@‰;iE;?0;#@‰;$o;%;&{ ;'0;iE;#@‰;iE;(To;;i ;[o;;i ;[o;;"set_icon;[ ;@;{ ;iO;0;[o;	;	;;"arrright;@;iOo;;i ;["font-size;[ ;o;;	;;"	.8em;@;@;iP;;o;;i ;["padding-left;[ ;o;;	;;"
+.18em;@;@;iQ;;;@;["&:after;iN;o;;[o; ;[o;!
+;[o;<;#" ;iNo;=
+;["
+after;	;>;#@
+;iN;?0;#@
+;$o;%;&{ ;'0;iN;#@
+;iN;(T;@;[".icon-outgoing;iL;o;;[o; ;[o;!
+;[o;:;["icon-outgoing;#" ;iL;#@;$o;%;&{ ;'0;iL;#@;iL;(To;
+;	;
+;[ ;["/* :after icons */;@;iVo;;i ;[o;;i ;["padding-right;[ ;o;	;"nav_btn_right_padding;"nav_btn_right_padding;@;iY;@;iY;;o;;i ;[o;;"btn_set_icon;[ ;@;{ ;i\;0;[o;	;	;@;"arrright;@;i\;@;["&:after;iZ;o;;[o; ;[o;!
+;[o;<;#" ;iZo;=
+;["
+after;	;>;#@=;iZ;?0;#@=;$o;%;&{ ;'0;iZ;#@=;iZ;(T;@;[" .btn-icon-arrright .btnbody;iW;o;;[o; ;[o;!
+;[o;:;["btn-icon-arrright;#" ;iW;#@N;$o;%;&{ ;'0;iWo;!
+;[o;:;["btnbody;#@N;iW;#@N;$o;%;&{ ;'0;iW;#@N;iW;(To;
+;	;
+;[ ;["9/* plus - minus icons handled with status .active */;@;ico;
+;	;
+;[ ;["•/*
+ *  NEEDED: 
+ *       Button DOM structure:
+        <a href="" class="dropouttrigger plusminus">
+            <div class="btnbody">Click Me!</div>
+        </a>
+ */;@;ido;;i ;[
+o;
+;	;;;[ ;["/*padding: $s_half 0; */;@;imo;;i ;["cursor;[ ;o;;	;;"pointer;@;@;in;;o;;i ;["position;[ ;o;;	;;"relative;@;@;io;;o;;i ;[o;;"btn_set_icon;[ ;@;{ ;ir;0;[o;	;	;;"	plus;@;iro;;i ;["
+color;[ ;o;	;"c_stone_middle;"c_stone_middle;@;is;@;is;;;@;[":after;iq;o;;[o; ;[o;!
+;[o;=
+;["
+after;	;>;#" ;iq;?0;#@ç;$o;%;&{ ;'0;iq;#@ç;iq;(To;;i ;[o;;"btn_set_icon;[ ;@;{ ;iw;0;[o;	;	;;"
+minus;@;iw;@;["&.active :after;iv;o;;[o; ;[o;!
+;[o;<;#" ;ivo;:;["active;#@¢;iv;#@¢;$o;%;&{ ;'0;ivo;!
+;[o;=
+;["
+after;	;>;#@¢;iv;?0;#@¢;$o;%;&{ ;'0;iv;#@¢;iv;(T;@;[".plusminus;ik;o;;[o; ;[o;!
+;[o;:;["plusminus;#" ;ik;#@∫;$o;%;&{ ;'0;ik;#@∫;ik;(To;
+;	;;;[ ;[")/*-------------> end button icons */;@;i}o;
+;	;
+;[ ;["˜/*
+ *  RHOMBUS BTN 
+ *  NEEDED: 
+ *      
+        <a href="" class="btn-rhombus">
+            <span class="openrhombus"></span>
+            <span class="btnbody icon-class">mehr</span>
+            <span class="closerhombus"></span>
+        </a>
+*/;@;iÅo;
+;	;
+;[ ;["&/* Button Rhombus - Base Style */;@;iåo;;i ;[o;;i ;["display;[ ;o;;	;;"inline-block;@;@;ié;;o;;i ;["white-space;[ ;o;;	;;"nowrap;@;@;iè;;o;;i ;["height;[ ;o;	;"btn_height_small;"btn_height_small;@;iê;@;iê;;o;
+;	;;;[ ;["#/*line-height: $btn_height; */;@;iëo;;i ;[o;;i ;["display;[ ;o;;	;;"
+block;@;@;iî;;o;;i ;["
+float;[ ;o;;	;;"	left;@;@;iï;;o;;i ;["height;[ ;o;;	;;"	32px;@;@;iñ;;;@;["	span;iì;o;;[o; ;[o;!
+;[o:Sass::Selector::Element	;["	span;#" ;iì:@namespace0;#@;$o;%;&{ ;'0;iì;#@;iì;(To;;i ;[o;;i ;["font-weight;[ ;o;;	;;"	bold;@;@;iö;;o;;i ;["font-size;[ ;o;	;"f_size_14;"f_size_14;@;iõ;@;iõ;;o;;i ;["line-height;[ ;o;	;"btn_height_small;"btn_height_small;@;iú;@;iú;;o;;i ;["overflow;[ ;o;;	;;"hidden;@;@;iù;;o;;i ;["white-space;[ ;o;;	;;"nowrap;@;@;iû;;o;;i ;["text-overflow;[ ;o;;	;;"ellipsis;@;@;iü;;o;;i ;["padding;[ ;o;;	;;"
+0 4px;@;@;i†;;o;;"transition;[ ;@;{ ;i°;0;[o;	;	;;"background-color;@;i°;@;[".btnbody;iô;o;;[o; ;[o;!
+;[o;:;["btnbody;#" ;iô;#@D;$o;%;&{ ;'0;iô;#@D;iô;(To;;i ;[o;;"transition;[ ;@;{ ;i¶;0;[o;	;	;;"border-color;@;i¶;@;["$.openrhombus,
+    .closerhombus;i•;o;;[o; ;[o;!
+;[o;:;["openrhombus;#" ;i•;#@[;$o;%;&{ ;'0;i•o; ;["
+o;!
+;[o;:;["closerhombus;#@[;i•;#@[;$o;%;&{ ;'0;i•;#@[;i•;(T;@;[".btn-rhombus-base;iç;o;;[o; ;[o;!
+;[o;:;["btn-rhombus-base;#" ;iç;#@s;$o;%;&{ ;'0;iç;#@s;iç;(To;
+;	;
+;[ ;["&/* Button Rhombus Color - Grey */;@;i´o;;i ;[o;;i ;[o;;"css_triangle_bottom_right;[ ;@;{ ;iØ;0;[o;	;"btn_height_small;"btn_height_small;@;iØo;	;"btn_height_small;"btn_height_small;@;iØo;	;"c_logo_grey;"c_logo_grey;@;iØ;@;[".openrhombus;iÆ;o;;[o; ;[o;!
+;[o;:;["openrhombus;#" ;iÆ;#@ó;$o;%;&{ ;'0;iÆ;#@ó;iÆ;(To;;i ;[o;;i ;["background-color;[ ;o;	;"c_logo_grey;"c_logo_grey;@;i≤;@;i≤;;o;;i ;["
+color;[ ;o;	;"c_white;"c_white;@;i≥;@;i≥;;;@;[".btnbody;i±;o;;[o; ;[o;!
+;[o;:;["btnbody;#" ;i±;#@µ;$o;%;&{ ;'0;i±;#@µ;i±;(To;;i ;[o;;"css_triangle_top_left;[ ;@;{ ;i∂;0;[o;	;"btn_height_small;"btn_height_small;@;i∂o;	;"btn_height_small;"btn_height_small;@;i∂o;	;"c_logo_grey;"c_logo_grey;@;i∂;@;[".closerhombus;iµ;o;;[o; ;[o;!
+;[o;:;["closerhombus;#" ;iµ;#@”;$o;%;&{ ;'0;iµ;#@”;iµ;(To;;i ;[o;;i ;["background-color;[ ;o;	;"c_logo_red;"c_logo_red;@;iª;@;iª;;;@;["&:hover .btnbody;i∫;o;;[o; ;[o;!
+;[o;<;#" ;i∫o;=
+;["
+hover;	;>;#@Ë;i∫;?0;#@Ë;$o;%;&{ ;'0;i∫o;!
+;[o;:;["btnbody;#@Ë;i∫;#@Ë;$o;%;&{ ;'0;i∫;#@Ë;i∫;(To;;i ;[o;;i ;["border-color;[ ;o;,	;[	o;	;	;;"transparent;@;iøo;	;	;;"transparent;@;iøo;	;"c_logo_red;"c_logo_red;@;iøo;	;	;;"transparent;@;iø;@;iø;8;9;@;iø;;;@;["&:hover .openrhombus;iæ;o;;[o; ;[o;!
+;[o;<;#" ;iæo;=
+;["
+hover;	;>;#@;iæ;?0;#@;$o;%;&{ ;'0;iæo;!
+;[o;:;["openrhombus;#@;iæ;#@;$o;%;&{ ;'0;iæ;#@;iæ;(To;;i ;[o;;i ;["border-color;[ ;o;,	;[	o;	;"c_logo_red;"c_logo_red;@;i√o;	;	;;"transparent;@;i√o;	;	;;"transparent;@;i√o;	;	;;"transparent;@;i√;@;i√;8;9;@;i√;;;@;["&:hover .closerhombus;i¬;o;;[o; ;[o;!
+;[o;<;#" ;i¬o;=
+;["
+hover;	;>;#@6;i¬;?0;#@6;$o;%;&{ ;'0;i¬o;!
+;[o;:;["closerhombus;#@6;i¬;#@6;$o;%;&{ ;'0;i¬;#@6;i¬;(T;@;[".btn-rhombuscolor-grey;i¨;o;;[o; ;[o;!
+;[o;:;["btn-rhombuscolor-grey;#" ;i¨;#@N;$o;%;&{ ;'0;i¨;#@N;i¨;(To;
+;	;
+;[ ;["'/* Button Rhombus Color - Black */;@;i»o;;i ;[o;;i ;[o;;"css_triangle_bottom_right;[ ;@;{ ;iÃ;0;[o;	;"btn_height_small;"btn_height_small;@;iÃo;	;"btn_height_small;"btn_height_small;@;iÃo;	;"c_black;"c_black;@;iÃ;@;[".openrhombus;iÀ;o;;[o; ;[o;!
+;[o;:;["openrhombus;#" ;iÀ;#@r;$o;%;&{ ;'0;iÀ;#@r;iÀ;(To;;i ;[o;;i ;["background-color;[ ;o;	;"c_black;"c_black;@;iœ;@;iœ;;o;;i ;["
+color;[ ;o;	;"c_white;"c_white;@;i–;@;i–;;;@;[".btnbody;iŒ;o;;[o; ;[o;!
+;[o;:;["btnbody;#" ;iŒ;#@ê;$o;%;&{ ;'0;iŒ;#@ê;iŒ;(To;;i ;[o;;"css_triangle_top_left;[ ;@;{ ;i”;0;[o;	;"btn_height_small;"btn_height_small;@;i”o;	;"btn_height_small;"btn_height_small;@;i”o;	;"c_black;"c_black;@;i”;@;[".closerhombus;i“;o;;[o; ;[o;!
+;[o;:;["closerhombus;#" ;i“;#@Æ;$o;%;&{ ;'0;i“;#@Æ;i“;(To;;i ;[o;;i ;["background-color;[ ;o;	;"c_logo_red;"c_logo_red;@;i◊;@;i◊;;;@;["&:hover .btnbody;i÷;o;;[o; ;[o;!
+;[o;<;#" ;i÷o;=
+;["
+hover;	;>;#@√;i÷;?0;#@√;$o;%;&{ ;'0;i÷o;!
+;[o;:;["btnbody;#@√;i÷;#@√;$o;%;&{ ;'0;i÷;#@√;i÷;(To;;i ;[o;;i ;["border-color;[ ;o;,	;[	o;	;	;;"transparent;@;i€o;	;	;;"transparent;@;i€o;	;"c_logo_red;"c_logo_red;@;i€o;	;	;;"transparent;@;i€;@;i€;8;9;@;i€;;;@;["&:hover .openrhombus;i⁄;o;;[o; ;[o;!
+;[o;<;#" ;i⁄o;=
+;["
+hover;	;>;#@Í;i⁄;?0;#@Í;$o;%;&{ ;'0;i⁄o;!
+;[o;:;["openrhombus;#@Í;i⁄;#@Í;$o;%;&{ ;'0;i⁄;#@Í;i⁄;(To;;i ;[o;;i ;["border-color;[ ;o;,	;[	o;	;"c_logo_red;"c_logo_red;@;iﬂo;	;	;;"transparent;@;iﬂo;	;	;;"transparent;@;iﬂo;	;	;;"transparent;@;iﬂ;@;iﬂ;8;9;@;iﬂ;;;@;["&:hover .closerhombus;iﬁ;o;;[o; ;[o;!
+;[o;<;#" ;iﬁo;=
+;["
+hover;	;>;#@	;iﬁ;?0;#@	;$o;%;&{ ;'0;iﬁo;!
+;[o;:;["closerhombus;#@	;iﬁ;#@	;$o;%;&{ ;'0;iﬁ;#@	;iﬁ;(To;;i ;[ ;@;["&.active;i‚;o;;[o; ;[o;!
+;[o;<;#" ;i‚o;:;["active;#@)	;i‚;#@)	;$o;%;&{ ;'0;i‚;#@)	;i‚;(T;@;[".btn-rhombuscolor-black;i…;o;;[o; ;[o;!
+;[o;:;["btn-rhombuscolor-black;#" ;i…;#@:	;$o;%;&{ ;'0;i…;#@:	;i…;(To;
+;	;
+;[ ;["%/* Button Rhombus Color - Red */;@;iÎo;;i ;[o;;i ;[o;;"css_triangle_bottom_right;[ ;@;{ ;iÔ;0;[o;	;"btn_height_small;"btn_height_small;@;iÔo;	;"btn_height_small;"btn_height_small;@;iÔo;	;"c_logo_red;"c_logo_red;@;iÔ;@;[".openrhombus;iÓ;o;;[o; ;[o;!
+;[o;:;["openrhombus;#" ;iÓ;#@^	;$o;%;&{ ;'0;iÓ;#@^	;iÓ;(To;;i ;[o;;i ;["background-color;[ ;o;	;"c_logo_red;"c_logo_red;@;iÚ;@;iÚ;;o;;i ;["
+color;[ ;o;	;"c_white;"c_white;@;iÛ;@;iÛ;;;@;[".btnbody;iÒ;o;;[o; ;[o;!
+;[o;:;["btnbody;#" ;iÒ;#@|	;$o;%;&{ ;'0;iÒ;#@|	;iÒ;(To;;i ;[o;;"css_triangle_top_left;[ ;@;{ ;iˆ;0;[o;	;"btn_height_small;"btn_height_small;@;iˆo;	;"btn_height_small;"btn_height_small;@;iˆo;	;"c_logo_red;"c_logo_red;@;iˆ;@;[".closerhombus;iı;o;;[o; ;[o;!
+;[o;:;["closerhombus;#" ;iı;#@ö	;$o;%;&{ ;'0;iı;#@ö	;iı;(To;;i ;[o;;i ;["background-color;[ ;o;	;"c_black;"c_black;@;i˙;@;i˙;;;@;["&:hover .btnbody;i˘;o;;[o; ;[o;!
+;[o;<;#" ;i˘o;=
+;["
+hover;	;>;#@Ø	;i˘;?0;#@Ø	;$o;%;&{ ;'0;i˘o;!
+;[o;:;["btnbody;#@Ø	;i˘;#@Ø	;$o;%;&{ ;'0;i˘;#@Ø	;i˘;(To;;i ;[o;;i ;["border-color;[ ;o;,	;[	o;	;	;;"transparent;@;i˛o;	;	;;"transparent;@;i˛o;	;"c_black;"c_black;@;i˛o;	;	;;"transparent;@;i˛;@;i˛;8;9;@;i˛;;;@;["&:hover .openrhombus;i˝;o;;[o; ;[o;!
+;[o;<;#" ;i˝o;=
+;["
+hover;	;>;#@÷	;i˝;?0;#@÷	;$o;%;&{ ;'0;i˝o;!
+;[o;:;["openrhombus;#@÷	;i˝;#@÷	;$o;%;&{ ;'0;i˝;#@÷	;i˝;(To;;i ;[o;;i ;["border-color;[ ;o;,	;[	o;	;"c_black;"c_black;@;io;	;	;;"transparent;@;io;	;	;;"transparent;@;io;	;	;;"transparent;@;i;@;i;8;9;@;i;;;@;["&:hover .closerhombus;i;o;;[o; ;[o;!
+;[o;<;#" ;io;=
+;["
+hover;	;>;#@˝	;i;?0;#@˝	;$o;%;&{ ;'0;io;!
+;[o;:;["closerhombus;#@˝	;i;#@˝	;$o;%;&{ ;'0;i;#@˝	;i;(T;@;[".btn-rhombuscolor-red;iÏ;o;;[o; ;[o;!
+;[o;:;["btn-rhombuscolor-red;#" ;iÏ;#@
+;$o;%;&{ ;'0;iÏ;#@
+;iÏ;(To;
+;	;;;[ ;["/* button builder */;@;io;;i ;[o;)
+;[ ;@;*["."btn-rhombus-base;i;+Fo;)
+;[ ;@;*["."btn-rhombuscolor-grey;i;+Fo;;i ;[o;)
+;[ ;@;*["."btn-rhombuscolor-red;i;+F;@;["&.active;i;o;;[o; ;[o;!
+;[o;<;#" ;io;:;["active;#@8
+;i;#@8
+;$o;%;&{ ;'0;i;#@8
+;i;(T;@;[".btn-rhombus-grey;i	;o;;[o; ;[o;!
+;[o;:;["btn-rhombus-grey;#" ;i	;#@I
+;$o;%;&{ ;'0;i	;#@I
+;i	;(To;;i ;[o;)
+;[ ;@;*["."btn-rhombus-base;i;+Fo;)
+;[ ;@;*["."btn-rhombuscolor-black;i;+Fo;;i ;[o;)
+;[ ;@;*["."btn-rhombuscolor-red;i;+F;@;["&.active;i;o;;[o; ;[o;!
+;[o;<;#" ;io;:;["active;#@h
+;i;#@h
+;$o;%;&{ ;'0;i;#@h
+;i;(T;@;[".btn-rhombus-black;i;o;;[o; ;[o;!
+;[o;:;["btn-rhombus-black;#" ;i;#@y
+;$o;%;&{ ;'0;i;#@y
+;i;(To;;i ;[o;)
+;[ ;@;*["."btn-rhombus-black;i#;+Fo;;i ;[
+o;;"set_icon;[ ;@;{ ;i%;0;[o;	;	;;"arrright;@;i%o;;i ;["
+color;[ ;o;	;"c_logo_red;"c_logo_red;@;i&;@;i&;;o;;i ;["font-size;[ ;o;;	;;"
+1.4em;@;@;i';;o;;i ;["vertical-align;[ ;o;;	;;"-0.2em;@;@;i(;;o;;i ;["padding-left;[ ;o;;	;;"
+0.3em;@;@;i);;;@;[".btnbody:after;i$;o;;[o; ;[o;!
+;[o;:;["btnbody;#" ;i$o;=
+;["
+after;	;>;#@∞
+;i$;?0;#@∞
+;$o;%;&{ ;'0;i$;#@∞
+;i$;(To;;i ;[o;;i ;[o;;i ;["
+color;[ ;o;	;"c_white;"c_white;@;i.;@;i.;;;@;[".btnbody:after;i-;o;;[o; ;[o;!
+;[o;:;["btnbody;#" ;i-o;=
+;["
+after;	;>;#@Ã
+;i-;?0;#@Ã
+;$o;%;&{ ;'0;i-;#@Ã
+;i-;(T;@;["&:hover;i,;o;;[o; ;[o;!
+;[o;<;#" ;i,o;=
+;["
+hover;	;>;#@€
+;i,;?0;#@€
+;$o;%;&{ ;'0;i,;#@€
+;i,;(T;@;[" .btn-rhombus-outgoing-right;i!;o;;[o; ;[o;!
+;[o;:;["btn-rhombus-outgoing-right;#" ;i!;#@Ï
+;$o;%;&{ ;'0;i!;#@Ï
+;i!;(To;;i ;[	o;)
+;[ ;@;*["."btn-rhombus-red;i5;+Fo;;i ;["text-transform;[ ;o;;	;;"uppercase;@;@;i6;;o;;i ;[	o;;"set_icon;[ ;@;{ ;i9;0;[o;	;	;;"arrright;@;i9o;;i ;["font-size;[ ;o;;	;;"
+1.4em;@;@;i:;;o;;i ;["vertical-align;[ ;o;;	;;"-0.2em;@;@;i;;;o;;i ;["padding-left;[ ;o;;	;;"
+0.3em;@;@;i<;;;@;[".btnbody:after;i8;o;;[o; ;[o;!
+;[o;:;["btnbody;#" ;i8o;=
+;["
+after;	;>;#@";i8;?0;#@";$o;%;&{ ;'0;i8;#@";i8;(To;;i ;[o;;i ;[o;;i ;["
+color;[ ;o;	;"c_white;"c_white;@;iA;@;iA;;;@;[".btnbody:after;i@;o;;[o; ;[o;!
+;[o;:;["btnbody;#" ;i@o;=
+;["
+after;	;>;#@>;i@;?0;#@>;$o;%;&{ ;'0;i@;#@>;i@;(T;@;["&:hover;i?;o;;[o; ;[o;!
+;[o;<;#" ;i?o;=
+;["
+hover;	;>;#@M;i?;?0;#@M;$o;%;&{ ;'0;i?;#@M;i?;(T;@;[".btn-rhombus-slide-right;i3;o;;[o; ;[o;!
+;[o;:;["btn-rhombus-slide-right;#" ;i3;#@^;$o;%;&{ ;'0;i3;#@^;i3;(To;;i ;[o;)
+;[ ;@;*["."btn-rhombus-black;iI;+Fo;;i ;[
+o;;"set_icon;[ ;@;{ ;iK;0;[o;	;	;;"arrleft;@;iKo;;i ;["
+color;[ ;o;	;"c_logo_red;"c_logo_red;@;iL;@;iL;;o;;i ;["font-size;[ ;o;;	;;"
+1.4em;@;@;iM;;o;;i ;["vertical-align;[ ;o;;	;;"-0.2em;@;@;iN;;o;;i ;["padding-right;[ ;o;;	;;"
+0.3em;@;@;iO;;;@;[".btnbody:before;iJ;o;;[o; ;[o;!
+;[o;:;["btnbody;#" ;iJo;=
+;["before;	;>;#@ï;iJ;?0;#@ï;$o;%;&{ ;'0;iJ;#@ï;iJ;(To;;i ;[o;;i ;[o;;i ;["
+color;[ ;o;	;"c_white;"c_white;@;iT;@;iT;;;@;[".btnbody:before;iS;o;;[o; ;[o;!
+;[o;:;["btnbody;#" ;iSo;=
+;["before;	;>;#@±;iS;?0;#@±;$o;%;&{ ;'0;iS;#@±;iS;(T;@;["&:hover;iR;o;;[o; ;[o;!
+;[o;<;#" ;iRo;=
+;["
+hover;	;>;#@¿;iR;?0;#@¿;$o;%;&{ ;'0;iR;#@¿;iR;(T;@;[".btn-rhombus-outgoing-left;iG;o;;[o; ;[o;!
+;[o;:;["btn-rhombus-outgoing-left;#" ;iG;#@—;$o;%;&{ ;'0;iG;#@—;iG;(To;;i ;[o;)
+;[ ;@;*["."btn-rhombus-base;i^;+Fo;)
+;[ ;@;*["."btn-rhombuscolor-red;i_;+Fo;;i ;[o;)
+;[ ;@;*["."btn-rhombuscolor-black;ib;+F;@;["&.active;ia;o;;[o; ;[o;!
+;[o;<;#" ;iao;:;["active;#@;ia;#@;$o;%;&{ ;'0;ia;#@;ia;(T;@;[".btn-rhombus-red;i\;o;;[o; ;[o;!
+;[o;:;["btn-rhombus-red;#" ;i\;#@;$o;%;&{ ;'0;i\;#@;i\;(To;
+;	;
+;[ ;["è/*
+ *  ANGEBOTFINDER BTN Menu
+ *  NEEDED: 
+
+        <a href="" class="btn-angebotfinder-text">
+            Angebot jetzt finden
+        </a>
+*/;@;imo;;i ;[o;;i ;[
+o;;"set_icon;[ ;@;{ ;ix;0;[o;	;	;;"	tool;@;ixo;;i ;["font-size;[ ;o;;	;;"
+1.4em;@;@;iy;;o;;i ;["vertical-align;[ ;o;;	;;"	-4px;@;@;iz;;o;;i ;["padding-right;[ ;o;;	;;"8px;@;@;i{;;o;;i ;["
+color;[ ;o;	;"c_black;"c_black;@;i|;@;i|;;;@;["&:before;iw;o;;[o; ;[o;!
+;[o;<;#" ;iwo;=
+;["before;	;>;#@5;iw;?0;#@5;$o;%;&{ ;'0;iw;#@5;iw;(To;;i ;[o;;"set_icon;[ ;@;{ ;iÄ;0;[o;	;	;;"arrright;@;iÄo;;i ;["font-size;[ ;o;;	;;"	.8em;@;@;iÅ;;o;;i ;["padding-left;[ ;o;;	;;"4px;@;@;iÇ;;;@;["&:after;i;o;;[o; ;[o;!
+;[o;<;#" ;io;=
+;["
+after;	;>;#@Y;i;?0;#@Y;$o;%;&{ ;'0;i;#@Y;i;(T;@;[".btn-angebotfinder-text;iu;o;;[o; ;[o;!
+;[o;:;["btn-angebotfinder-text;#" ;iu;#@j;$o;%;&{ ;'0;iu;#@j;iu;(T;@;i;(T

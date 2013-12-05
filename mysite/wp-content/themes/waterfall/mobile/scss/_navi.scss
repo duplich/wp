@@ -1,0 +1,339 @@
+
+// STATUS: Killed all hover for touch-devices
+
+//-------------> begin navigation basic     
+#navigation {
+
+    
+    // navigation a basic
+    a {
+        text-decoration: none;
+        color: $c_stone_black;
+
+        /*&:hover {
+            color: $c_white;
+        }*/
+
+        &:active {
+            color: $c_logo_red;
+        }
+    }
+}
+//-------------> end navigation basic 
+
+
+
+//-------------> begin navigation button 
+#navigation {
+     
+        %navbutton {
+
+            $menuicon_top_paddin: ($topbar_height - 14px*$lh_standard)/2;
+            
+            border-right: 4px solid transparent;
+            cursor: pointer;
+            display: block;
+            float: right;
+            font-size: 14px;
+            height: $topbar_height - $menuicon_top_paddin;
+            padding-top: $menuicon_top_paddin;
+            text-align: center;
+            text-transform: uppercase;
+            width: 30%;
+            
+            // click and hover effects
+            /*&:hover {
+                background-color: $c_grey_light;
+                border-right: 4px solid $c_logo_red;
+                color: $c_black;
+              
+            }*/
+
+            &:active {
+                background-color: $c_logo_red;
+                color: $c_white;
+            }
+
+        }// end %navbutton
+
+        // is active
+        %navbutton.active {
+
+                background-color: $c_grey_light;
+                border-right: 4px solid $c_logo_red;
+                color: $c_black;
+
+                // click and hover effects
+                /*&:hover {
+                    background-color: $c_logo_red;
+                    border-right: 4px solid $c_logo_red;
+                    color: $c_white;
+                  
+                }*/
+
+                &:active {
+                    background-color: $c_black;
+                    color: $c_white;
+                }
+
+            }
+
+
+        // create buttons here by caling "@extend %navbutton; like this example:
+        #menu {
+            @extend %navbutton; 
+            
+            &:before {
+                // calls the menu icon styles
+                @include set_icon ("menu"); 
+                font-size: 140%;
+                vertical-align: -4px;
+            }
+
+        }
+
+} 
+//-------------> end navigation button
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------> begin dropdown 
+#navigation {
+
+    // navigation-dropdown container
+    div.navdropout {
+
+        background-color: $c_grey_light;
+        border-right: 4px solid $c_logo_red;
+        margin-top: $topbar_height;
+        position: relative;
+        top: -1px; // fix border
+        width: 100%; // fix
+        z-index: 100;
+        @include border_box;
+    
+    }// end .navdropout
+    
+
+    // button base
+    ul {
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+
+
+    // navigation-dropdown list
+    ul li {
+        
+        border-top: 1px solid $c_white;
+        font-size: 1.071em; // 14px - 15px;
+        position: relative; // for icons
+
+
+        // link styling of navigation-dropdown
+        a,
+        %navdropdown-special-type {
+
+            // be a bautton
+            color: $c_black;
+            cursor: pointer;
+            display: block;
+            overflow: hidden;
+            padding: ($btn_height_big - 15px*$lh_standard)/2   $nav_btn_right_padding   ($btn_height_big - 15px*$lh_standard)/2   $nav_btn_left_padding;
+            text-overflow: ellipsis;
+            text-transform: uppercase;
+            white-space: nowrap;
+            width: 100% - $nav_btn_left_padding - $nav_btn_right_padding;
+
+            // hover of button navigation-dropdown
+            /*&:hover {
+                background-color: $c_logo_red;
+                color: $c_white;
+                
+                // change info-words too
+                span.info {
+                    color: $c_black;
+                 }
+            }*/
+
+
+            &:active {
+                background-color: $c_logo_red;
+                color: $c_white;
+                
+                // change info-words too
+                span.info {
+                    color: $c_black;
+                 }
+            }
+
+            // lightweight info-words of the buttons
+            span.info {
+                color: $c_grey_dark;
+                font-size: 0.933em; // 15px -> 14px
+                text-transform: none;
+                //@include transition (color);
+            }
+
+        
+        }
+
+        
+        // arrows for links
+        a {
+
+            // add arrow to the right
+            &:after {
+                /* arrow font-icons */
+                @include btn_set_icon("arrright", 1em, $nav_arrow_right_span);
+                @include shadow_text( 0px, 1px, 1px, $c_white);
+                color: $c_stone_middle;
+            }
+            
+        }
+
+        
+        // two links in one row li>a+a
+         &.twolinksrow {
+            
+            // (a)
+            a {
+                //change width-behaviour to acsomplish 
+                @include border_box;
+                display: inline-block;
+                width: 50%;
+                &:after {
+                    // special arrow style-handling
+                    right: 50% + $nav_arrow_right_span;
+                }
+            }
+            
+            // (a)
+            a:nth-of-type(2) {
+                // the second links has a border to separate the half-buttons visually
+                border-left: 1px solid $c_white;
+                &:after {
+                    // special arrow style-handling
+                    right: $nav_arrow_right_span;
+                }
+            }
+        } 
+
+    } 
+}
+//-------------> end dropdown      
+       
+
+
+
+//-------------> begin sublevel-navigation 
+#navigation ul li {      
+
+        
+    // sublevel-trigger-button 
+    div.subleveltrigger div.triggerbutton, {
+        @extend %navdropdown-special-type;
+    }
+    
+
+    // sublevel-trigger-button opened
+    div.subleveltrigger.active div.triggerbutton {
+
+        color: $c_white;
+        background-color: $c_black;
+
+        /*&:hover {
+
+            background-color: $c_logo_red;
+            color: $c_white;
+            
+            // change info-words too
+            span.info {
+                color: $c_black;
+             }
+        }*/
+
+        &:active {
+
+            background-color: $c_logo_red;
+            color: $c_white;
+            
+            // change info-words too
+            span.info {
+                color: $c_black;
+             }
+        }
+    }
+
+
+
+
+    // navigation-dropdown container
+    div.sublevel {
+
+        //margin-top: $topbar_height;
+        //border-right: 4px solid $c_logo_red;
+        padding: 8px 0 $btn_margin_bottom 10%;
+        background-color: $c_bg;
+    
+    }// end .navdropout
+    
+    
+
+    ul li {
+        /* sublevel-navigation */
+
+        border: none;
+
+        h4 {
+            font-size: 0.867em; // 15px -> 13px
+            font-weight: bold;
+            margin-top: 24px;
+            overflow: hidden;
+            padding-right: $nav_btn_left_padding;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+
+        // link styling of navigation-dropdown
+        // (a)
+        a {
+            // be a bautton
+            background-color: $c_grey_light;
+            color: $c_logo_grey;
+            font-size: 0.867em; // 15px -> 13px
+            margin-bottom: $btn_margin_bottom / 2;
+            padding: ($btn_height - 13px*$lh_standard)/2   $nav_btn_right_padding   ($btn_height - 13px*$lh_standard)/2   $nav_btn_left_padding*0.5;
+            width: 98% - $nav_btn_left_padding*0.5 - $nav_btn_right_padding;
+
+            // hover of button navigation-dropdown
+            /*&:hover {
+                background-color: $c_logo_red;
+                color: $c_white;
+            }*/
+
+            &:after {
+                /* arrow font-icons */
+                color: $c_white;
+            }
+        }
+
+        .btn-foldin {
+            margin-left: -5%;
+        }
+    }
+}
+//-------------> end sublevel-navigation 

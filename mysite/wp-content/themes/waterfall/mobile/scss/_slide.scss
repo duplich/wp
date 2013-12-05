@@ -1,0 +1,553 @@
+// slideshow styling
+.slideshow {
+    
+    position: relative;
+    background-color: $c_grey_light_ultra;
+    //box-shadow: inset 0px 0px 8px $c_grey_light_extra;
+
+    .slidenav {
+    
+        $sliednav_sensitive_width: 50px;
+        $sliednav_sensitive_height: 300px;
+
+        $slidenav_height: 200px;
+        $slidenav_width: 80px;
+        $slidenav_icon_size: 30px;
+
+
+        position: relative;
+        z-index: 80;
+        max-width: 800px;
+        margin: 0 auto;
+
+        .prev, 
+        .next {
+            //display: table;
+            height: $sliednav_sensitive_height;
+           
+            opacity: .25;
+            position: absolute;
+            width: $sliednav_sensitive_width;
+
+            @media screen and (max-width: 430px ) {
+                display: none;
+            }
+            
+            @include transition( opacity, 0.4s );
+            
+            &:hover {
+                opacity: .85;
+            }
+
+            .button {
+                //background-color: $c_black;
+                cursor: pointer;
+                display: block;
+                height: $slidenav_height;
+                overflow: hidden;
+                position: absolute;
+                top: 35%;
+                width: $slidenav_width;
+
+                .icon:before {
+                    color: $c_logo_grey;
+                    font-size:  $slidenav_icon_size;
+                    padding-top:  ($slidenav_height - $slidenav_icon_size)/2 * 0.96;
+                }
+            }
+        }
+
+        .prev {
+
+            left: 0px;
+
+            .button {
+
+                left: 0px;
+
+                .icon:before {
+                    @include set_icon(arrleft);
+                    float: left;
+                    margin-left: 16px;
+                }
+            }
+        }
+
+        .next {
+     
+            right: 0px;
+
+            .button  {
+
+                right: 0px;
+
+                .icon:before {
+                    @include set_icon(arrright);
+                    float: right;
+                    margin-right: 16px;
+                }
+            }
+        }
+    }
+
+
+    // pagination with icons 
+    .pagination {
+        
+        //position: relative;
+        height: 28px;
+        text-align: center;
+
+        .pagenumber {
+            
+            // sensitive area
+            height: 20px;
+            cursor: pointer;
+            display: inline-block;
+            
+
+
+            &:hover,
+            &.active {
+
+                .button {
+                    background-color: $c_logo_red;
+                }
+            }
+            
+            // styling
+            .button {
+                background-color: $c_black;
+                height: 5px;
+                width: 5px;
+                margin: 8px 8px;
+
+            }
+        }
+    }
+    
+    
+
+    
+
+}// end slideshow
+
+
+
+
+
+
+
+
+//-------> SLIDE STYLES     
+
+
+// base style
+.slide-basic {
+    display: block;
+}
+
+.slider {
+    // give slides max width
+    max-width: 430px;
+    margin: 0 auto;
+}
+
+    // sizes
+    .slide {
+        width: 100%;
+        // base size: 320 x 320 (mit img resolution von 430 x 580) (aspect ration 134.375%)
+        display: block;
+        position: relative;
+        overflow: hidden;
+        
+        .wrapper {
+
+            &.full-size {
+                width: 100%;
+            }
+
+            &.base-size {
+                // some slides shouldn't reach the boundaries
+                margin: $span_frame * 0.5;
+                width: 100% - $span_frame;
+            }   
+        }
+    }
+
+ 
+
+        // reusable snippets
+
+        %slide-with-img {
+            img.img {
+                display: block;
+                //max-width: 100%;
+                width: 100%;
+                margin: 0 auto;
+            }
+        }
+        
+
+
+        // makes slide holding aspect ratio
+        %slide-aspect-ration {
+            width: 100%; /*whatever width you want*/
+            display: inline-block;
+            position: relative;
+
+            &:after {
+                //padding-top: 134.375%; /* 32:43 ratio*/
+                padding-top: 100%;
+                display: block;
+                content: '';
+            }
+            .wrapper {
+                position: absolute;
+                top: 0; bottom: 0; right: 0; left: 0; /*fill parent*/
+            }
+        }
+
+
+
+
+        // Image slide image
+        .slide-image {
+
+            @extend .slide-basic;
+            @extend .slide;
+            @extend %slide-with-img;
+            
+
+        }
+
+
+
+        // Image slide mission
+        .slide-mission {
+
+            @extend .slide-basic;
+            @extend .slide;
+            @extend %slide-aspect-ration;
+
+            .wrapper {
+                //position: relative;
+                color: $c_white;
+                background-color: $c_black;
+                
+            }
+
+            .headline,
+            .message {
+                color: $c_white;
+                text-align: center;
+                
+            }
+            
+            .headline {
+                font-size: $f_size_28;
+                font-weight: bold;
+            }
+            
+            .message {
+                font-size: $f_size_15;
+                text-transform: uppercase;
+            }
+
+            .pos {
+                padding: 0 $span_frame*2;
+                width: 100% - $span_frame*4;
+                position: absolute;
+                top: 15%;
+                @media screen and (max-width: 280px) {
+                    top: 5%;
+                }
+            }
+            
+        }
+
+
+
+
+
+        // Image slide team
+        .slide-team {
+
+            @extend .slide-basic;
+            @extend .slide;
+            @extend %slide-with-img;
+            @extend %slide-aspect-ration;
+
+       
+
+            .headline,
+            .message {
+                color: $c_black;
+                text-align: center;
+                
+            }
+            
+            .headline {
+                font-size: $f_size_28;
+                margin: .3em 0;
+                font-weight: bold;
+            }
+            
+            .message {
+                font-size: $f_size_15;
+                text-transform: uppercase;
+            }
+
+            .pos {
+                padding: 0 $span_frame*2;
+                width: 100% - $span_frame*4;
+                //margin-top: -50%;
+                position: absolute;
+                top: 5%;
+                @media screen and (max-width: 280px) {
+                    top: 0;
+                }
+            }
+            
+        }
+
+
+
+        // Image slide we do
+        .slide-we-do {
+
+            @extend .slide-basic;
+            @extend .slide;
+            @extend %slide-with-img;
+            @extend %slide-aspect-ration;
+
+         
+
+            .headline,
+            .message {
+                color: $c_black;
+                text-align: center;
+                
+            }
+            
+            .headline {
+                font-size: $f_size_28;
+                margin: .3em 0;
+                font-weight: bold;
+            }
+            
+            .message {
+                font-size: $f_size_15;
+                text-transform: uppercase;
+            }
+
+            .pos {
+                padding: 0 $span_frame*2;
+                width: 100% - $span_frame*4;
+                //margin-top: -50%;
+                position: absolute;
+                top: 10%;
+                @media screen and (max-width: 280px) {
+                    top: 5%;
+                }
+            }
+            
+        }
+
+
+
+        // Image slide loft
+        .slide-loft {
+
+            @extend .slide-basic;
+            @extend .slide;
+            @extend %slide-with-img;
+            @extend %slide-aspect-ration;
+
+         
+
+            .headline,
+            .message {
+                color: $c_white;
+                text-align: center;
+                // @media screen and (max-width: 260px) {
+                //     color: $c_white;
+                // }
+            }
+            
+            .headline {
+                font-size: $f_size_28;
+                margin: .3em 0;
+                font-weight: bold;
+            }
+            
+            .message {
+                font-size: $f_size_15;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            .pos {
+                padding: 0 $span_frame*2;
+                width: 100% - $span_frame*4;
+                position: absolute;
+                bottom: 5%;
+                @media screen and (max-width: 300px) {
+                    bottom: 0;
+                }
+            }
+            
+        }
+
+
+
+
+
+        // Image slide principle
+        .slide-principle {
+
+            @extend .slide-basic;
+            @extend .slide;
+            @extend %slide-with-img;
+            @extend %slide-aspect-ration;
+
+         
+
+            .headline,
+            .message {
+                text-align: left;
+            }
+            
+            .headline {
+                font-size: $f_size_19;
+                margin: .3em 0;
+                font-weight: bold;
+            }
+            
+            .message {
+                font-size: $f_size_15;
+                @media screen and (max-width: 280px) {
+                    font-size: $f_size_13;
+                }
+            }
+
+            .pos {
+                padding: 0 $span_frame*2;
+                width: 100% - $span_frame*4;
+                position: absolute;
+                top: 30%;
+            }
+            
+        }
+
+
+
+
+        // Image slide principles
+        .slide-principles {
+
+            @extend .slide-basic;
+            @extend .slide;
+            @extend %slide-with-img;
+            @extend %slide-aspect-ration;
+
+       
+
+            .headline,
+            .message {
+                color: $c_white;
+                text-align: center;
+                
+            }
+            
+            .headline {
+                font-size: $f_size_28;
+                margin: .3em 0;
+                font-weight: bold;
+            }
+            
+            .message {
+                font-size: $f_size_15;
+                text-transform: uppercase;
+            }
+            
+            .button {
+                position: absolute;
+                bottom: 10%;
+                left: 7%;
+                width: auto;
+                right: 7%;
+                .btnbody {
+                    text-align: center;
+                    padding: 0 8%;
+                }
+            }
+
+            .pos {
+                padding: 0 $span_frame*2;
+                width: 100% - $span_frame*4;
+                position: absolute;
+                top: 15%;
+                @media screen and (max-width: 280px) {
+                    top: 8%;
+                }
+            }
+            
+        }
+
+
+
+
+
+        // Image slide cite
+        .slide-cite {
+
+            @extend .slide-basic;
+            @extend .slide;
+            @extend %slide-aspect-ration;
+
+            
+            .headline,
+            .message {
+                text-align: left;
+                
+            }
+            
+            .headline {
+                font-size: $f_size_15;
+                margin: .3em 0;
+                font-weight: bold;
+                @media screen and (max-width: 260px) {
+                    font-size: $f_size_13;
+                }
+            }
+            
+            .message {
+                font-size: $f_size_15;
+                @media screen and (max-width: 260px) {
+                    font-size: $f_size_13;
+                }
+            }
+
+            .pos,
+            .headline {
+                padding: 0 $span_frame*2;
+                width: 100% - $span_frame*4;
+                position: absolute;
+            }
+
+            .pos {
+                top: 5%;
+                @media screen and (max-width: 280px) {
+                    top: 0;
+                }
+            }
+
+            .headline {
+                bottom: 5%;
+            }
+            
+        }
+
+
+

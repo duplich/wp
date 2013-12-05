@@ -1,0 +1,1603 @@
+/*
+ * BEGIN INCLUDE FILES
+ */
+ @import "normalize","reusable","inhalt";
+
+/*
+ * END INCLUDE FILES
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================================ */
+/*      SECTION 1      */
+/* ============================================================================ */
+
+
+/* 1.1 - Base Styles */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+
+    /*@viewport,
+    @-ms-viewport{
+        width: auto;
+        zoom: auto;
+    }*/
+
+
+    html,
+    button,
+    input,
+    select,
+    textarea {
+        color: #222;
+    }
+
+    body {
+        background-color: $c_bg;
+        font-family: $f_sistony;
+        font-size: $f_size_base;
+        line-height: $lh_standard;
+        min-width: $width_standard;
+        
+    }
+
+    /*
+     * Remove text-shadow in selection highlight: h5bp.com/i
+     * These selection rule sets have to be separate.
+     * Customize the background color to match your design.
+     */
+
+    ::-moz-selection {
+        background: #b3d4fc;
+        text-shadow: none;
+    }
+
+    ::selection {
+        background: #b3d4fc;
+        text-shadow: none;
+    }
+
+    /*
+     * A better looking default horizontal rule
+     */
+
+    hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #ccc;
+        margin: 1em 0;
+        padding: 0;
+    }
+
+    /*
+     * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+     */
+
+    img {
+        vertical-align: middle;
+    }
+
+    /*
+     * Remove default fieldset styles.
+     */
+
+    fieldset {
+        border: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    /*
+     * Allow only vertical resizing of textareas.
+     */
+
+    textarea {
+        resize: vertical;
+    }
+
+    /* 
+     *  Chrome Frame prompt
+     */
+
+    .chromeframe {
+        margin: 0.2em 0;
+        background: #ccc;
+        color: #000;
+        padding: 0.2em 0;
+    }
+
+
+
+/* 1.2 - FORMS AND INPUTS */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+input, textarea {
+
+    border: $border_slight;
+    background-color: $c_grey_light_ultra;
+    border-radius: 1px;
+    width: 100%;
+    padding: .5em;
+    @include border_box;
+    min-height: 40px;
+    margin-bottom: $t_margin;
+
+}
+
+textarea {
+    min-height: 40px*5;
+}
+
+input[type="submit"] {
+    width: 100%;
+    border: none;
+}
+
+label {
+    //color: $c_grey_middle;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+
+
+/* 1.3 - TYPOGRAPHY */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+h1 {
+    @include f_headline( $c_black, bold);
+    font-size: $f_size_36; 
+}
+
+h2 {
+    @include f_headline( $c_black, bold);
+    font-size: $f_size_28; 
+}
+
+h3 {
+    @include f_headline( $c_black, bold);
+    font-size: $f_size_24; 
+}
+
+h4 {
+
+    @include f_headline( $c_black, bold);
+    font-size: $f_size_18; 
+
+}
+
+h5 {
+    @include f_headline( $c_black, bold);
+    font-size: $f_size_16; 
+}
+
+h6 {
+    @include f_headline( $c_black, bold);
+    font-size: $f_size_14; 
+}
+
+
+.article {
+
+    /* use as headline - but you should only use one h1 for your whole site  */
+    h1 { 
+        font-size: $f_size_28; 
+    }
+
+    /* use as headline */
+    h2 {
+        font-size: $f_size_28; 
+    }
+    
+    /* use as headline */
+    h3 {
+        font-size: $f_size_24; 
+    }
+    
+    /* use as headline */
+    h4 {
+        font-size: $f_size_18;
+    }
+
+    /* use as SUBLINE!!! */
+    h5 {
+        font-size: $f_size_18;
+        color: $c_logo_grey;
+        font-weight: normal;
+        text-transform: none;
+        line-height: 1.5; 
+    }
+    
+    /* use as headline for <p> passage */
+    h6 {
+        font-size: $f_size_14; 
+    }
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: $lh_heading;
+    margin: $t_margin 0;
+}
+
+// small margin when h1-3 ist the first elm
+h1, h2, h3 {
+
+    &:first-child {
+        margin-top: $t_margin*0.5;
+    }
+}
+
+
+
+// passsage handling
+p {
+
+    @include f_text ($c_base_font_color);
+    margin-top: $t_margin;
+    margin-bottom: $t_margin;
+    
+
+    // last pessage has greater margin
+    &:last-of-type {
+      margin-bottom: $t_margin_passage; 
+    }
+
+
+    // large marign when <h1-6> follows <p>
+    &+h1, &+h2, &+h3, &+h4, &+h5, &+h6 {
+        margin-top: $t_margin_passage;
+    }
+
+}
+
+
+// zitate
+blockquote {
+
+    @include f_text ($c_grey_dark);
+    font-size: 1.143em; // 16px
+    margin: $t_margin_passage $t_margin_passage*1.5;
+    text-align: center;
+
+
+    &:before {
+        content: "» ";
+    }
+
+    &:after {
+        content: " «";
+    }
+}
+
+
+    
+
+
+
+/* 1.4 - ICONS */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+@import "iconset";
+
+
+@include generate_before_icon_classes( facebook, hack, grouptraining, personaltraining, arrright, arrup, phone, minus, plus, square, arrleft, arrdown, mobile, pc, tool, pencil, mail, letter, place, menu, home, route, vcard, minus-rhombus, plus-rhombus, minus-circle, plus-circle );
+
+
+.be-a-symbol {
+    display: block;
+    line-height: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* 1.5 - LINKS AND BUTTONS */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+%a-base {
+    @include transition( color );
+}
+
+a{
+    @extend %a-base;
+    color: $c_logo_red;
+    text-decoration: none;
+
+    &:hover {
+        color: $c_logo_black;
+    }
+
+    &:active {
+        color: $c_white;
+    }
+
+}
+
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+    text-decoration: none;
+}
+
+
+
+
+/* Link Theme */
+// predefined a styles
+// use it with @extend %a-style-name
+%use-a-stone {
+    
+    @extend %a-base;
+    color: $c_stone_black;
+    text-decoration: none;
+
+    &:hover {
+        color: $c_stone_black;
+    }
+
+    &.active,
+    &:active {
+        color: $c_white;
+        background-color: $c_logo_red;
+    }
+
+}
+
+
+// predefined a styles
+// use it with @extend %a-style-name
+%a-red {
+
+    @extend %a-base;
+    color: $c_logo_red;
+
+    &:hover,
+    &.active,
+    &:active {
+        color: $c_black;
+    } 
+}
+
+
+// predefined a styles
+// use it with @extend %a-style-name
+%a-grey {
+
+    @extend %a-base;
+    color: $c_logo_grey;
+
+    &:hover,
+    &.active,
+    &:active {
+        color: $c_logo_red;
+    } 
+}
+
+
+// predefined a styles
+// use it with @extend %a-style-name
+%a-white {
+    
+    @extend %a-base;
+    color: $c_white;
+
+    &:hover,
+    &.active,
+    &:active {
+        color: $c_logo_red;
+    } 
+}
+
+
+
+// predefined a styles
+// use it with @extend %a-style-name
+%a-black {
+    
+    @extend %a-base;
+    color: $c_black;
+
+    &:hover,
+    &.active,
+    &:active {
+        color: $c_logo_red;
+    } 
+}
+
+
+
+// predefined a styles
+// use it with @extend %a-style-name
+%a-grey-light {
+    
+    @extend %a-base;
+    color: $c_grey_light_extra;
+
+    &:hover,
+    &.active,
+    &:active {
+        color: $c_logo_red;
+    } 
+
+    } 
+
+
+// predefined a styles
+// use it with @extend %a-style-name
+%a-grey-middle {
+    
+    @extend %a-base;
+    color: $c_grey_middle;
+
+    &:hover,
+    &.active,
+    &:active {
+        color: $c_logo_red;
+    } 
+
+}   
+
+
+
+// icon for outgoing links 
+// use it with @extend %a-style-name
+.outgoinglink:after,
+%a-outgoing:after {
+        @include set_icon(arrright);
+        font-size: .8em;
+        padding-left: 4px;
+        opacity: 0.35;
+        @include transition(opacity);
+    }
+    
+    .outgoinglink:hover:after,
+    %a-outgoing:hover:after {
+        opacity: 1;
+    }
+
+
+
+
+
+@import "buttons";
+
+
+
+
+
+
+
+
+
+
+
+/* 1.6 - TABLES */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================================ */
+/*      SECTION 2      */
+/* ============================================================================ */
+
+
+/* 2.1 - HELPER CLASSES */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+@import "helper";
+    
+
+
+
+
+
+
+/* 2.2 - GRID SYSTEM */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+.wrap-full,
+ %col_full_size {
+    width: $width_standard;
+    margin-left: auto;
+    margin-right: auto;
+ }  
+
+.wrap-base,
+ %col_base_size {
+    width: $width_standard - $span_40*2;
+    margin-left: auto;
+    margin-right: auto;
+ } 
+
+
+
+
+
+%base-division {
+
+    display: block;
+    //float: left;
+    margin-right: $span_gutter;
+
+    &.last {
+        margin-right: 0px;
+    }
+}
+
+
+.full {
+    @extend %base-division;
+    width: $span_full - $span_gutter;
+}
+
+
+.half {
+    @extend %base-division;
+    width: $span_halft;
+}
+
+
+.third {
+    @extend %base-division;
+    width: $span_third;
+}
+
+    .twothirds {
+        @extend %base-division;
+        width: $span_third * 2 + $span_gutter;
+    }
+
+
+.quater {
+    @extend %base-division;
+    width: $span_quater;
+}
+
+    .threequaters {
+        @extend %base-division;
+        width: $span_quater * 3 + $span_gutter*2;
+    }
+
+
+.fifth {
+    @extend %base-division;
+    width: $span_fifth;
+}
+
+    .twofifths {
+        @extend %base-division;
+        width: $span_fifth*2 + $span_gutter;
+    }
+
+    .threefifths {
+        @extend %base-division;
+        width: $span_fifth*3 + $span_gutter*2;
+    }
+
+    .fourfifths {
+        @extend %base-division;
+        width: $span_fifth*4 + $span_gutter*3;
+    }
+    
+
+
+
+
+// has to be after the span-sections for overriding purpose
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+
+
+
+// margins top
+.mt-third { margin-top: $s_third !important; }
+.mt-half { margin-top: $s_half !important; }
+.mt-near { margin-top: $s_near !important; }
+.mt-base { margin-top: $s_base !important; }
+.mt-plus { margin-top: $s_plus !important; }
+.mt-middle { margin-top: $s_middle !important; }
+.mt-sized { margin-top: $s_sized !important; }
+.mt-big { margin-top: $s_big !important; }
+.mt-huge { margin-top: $s_huge !important; }
+.mt-extra { margin-top: $s_extra !important; }
+.mt-mega { margin-top: $s_mega !important; }
+
+// margin centre
+.mc { margin-left: auto; margin-right: auto; }
+
+
+
+.mt-normal,
+ %mt_normal_size {
+    margin-top: $s_sized;
+ } 
+
+
+
+
+
+
+
+
+/* 2.3 - LISTS */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+
+ul, ol, dl {
+    margin: $t_margin_passage 0px;
+    list-style: square;
+    padding-left: 30px;
+}
+
+
+ul, ol, dl {
+    
+    &.no-style {
+        list-style: none;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================================ */
+/*      SECTION 3      */
+/* ============================================================================ */
+
+
+
+
+/* 3.1 - TOPBAR */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+#topbar {
+    
+    @extend %col_full_size;
+
+    display: block;
+    position: relative;
+   
+    z-index: 90;
+
+    // list base settings
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul li {
+        list-style: none;
+    }
+
+    h4, h5 {
+        font-size: $f_size_14;
+        font-weight: bold;
+    }
+}// end topbar
+
+
+
+
+
+// logobar - first row fllowed by nav-row
+#logobar {
+
+    ul li {
+        display: inline-block;
+    }
+
+    height: $topbar_height;
+    margin: 0 $span_40;
+
+    // cotnains the logo
+    a.logo h1,
+    a.logo h2 {
+
+        background-image: url( ../img/reusable/logo_bewegungsloft_fuerth.png );
+        float: left;
+        height: $logo_height; 
+        margin: $logo_distance_top 0 0 0;
+        width: $logo_width;  
+
+    }
+
+
+    a {
+        @extend %a-grey-light;
+    }
+
+
+    // additional link section for social links ...
+    .links {
+
+        float: right;
+
+        ul.contactlinks,
+        ul.sociallinks {
+
+            float: left;
+            margin: $logobar_links_top_margin 0 0 0;
+            text-transform: uppercase;
+
+            .icon:before {
+                //icons
+                font-size: 1.4em;
+                padding-right: 4px;
+                vertical-align: -3px;
+            }
+        }
+
+        ul.contactlinks {
+            li {
+                margin-left: 32px;
+            }
+        }
+
+        ul.sociallinks {
+            margin-left: 50px;
+            li {
+                margin-left: 8px;
+            }
+            
+        }
+
+    }
+    
+}// end #logobar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 3.2 - NAVIGATION */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+@import "navi";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 3.3 - HEADER */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+@import "breadcrump";
+
+
+// title of the page
+#title {
+    
+    @extend %col_base_size;
+    margin-top: $s_middle;
+
+    h1, h2 {
+        //font-size: $f_size_19;
+    }
+
+    h3, h4 {
+        text-transform: none;
+        color: $c_logo_grey;
+        font-weight: normal;
+        font-size: $f_size_18;
+    }
+
+    h1, h2, h3, h4 {
+        margin-top: 0px;
+        margin-bottom: 0;
+        //margin: $t_margin*0.2 0;
+    }
+
+}
+
+
+// header image
+#haederimg {
+
+    @extend %col_full_size;
+    margin-top: -32px;
+
+}
+
+
+
+
+
+    /* 3.5.1 - HEADER - Slides */
+    /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+    @import "slide";
+
+
+
+
+
+
+
+/* 3.4 - FOOTER */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+@import "footer";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 3.5 - MODULES */
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+    
+    
+    /*%base-frame {
+        margin: $s_middle $span_frame 0 $span_frame;
+    }*/
+
+
+    /* 3.5.1 - MODULES - Contactblock */
+    /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+    .contactblock {
+        
+        @extend %col_base_size;
+        @extend %mt_normal_size;
+
+        .button {
+            margin-bottom: $s_half;
+        }
+
+    }
+   
+
+
+
+
+    /* 3.5.2 - MODULES - Catchwords */
+    /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+    .catchwords {
+
+        @extend %col_base_size;
+
+        .modul {
+
+            //padding: 0.6em 0;
+
+            h4 {
+                font-size: $f_size_13;
+                //margin: 0.3em 0;
+            }
+
+            p {
+                //margin: 0.3em 0;
+            }
+
+        }        
+
+    }
+
+
+    /* 3.5.3 - MODULES - Article */
+    /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+    .article {
+
+        @extend %col_base_size;
+
+
+        .modul {
+
+            @extend %mt_normal_size;
+
+            h1, h2, h3, h4, h5, h6, p, blockquote {
+                padding: 0 2px;
+            }
+
+
+
+
+            img {
+                width: 100%;
+                margin: $t_margin 0;
+            }
+
+            .besmaller-left img {
+                width: 88%;
+                padding-right: 12%;
+            }
+
+            .besmaller-right img {
+                width: 88%;
+                padding-left: 12%;
+            }
+
+            .subline {
+                font-size: $f_size_18;
+                color: $c_logo_grey;
+                font-weight: normal;
+            }
+            
+
+        }
+
+        .headline-near {
+            &+.modul {
+                margin-top: 0px;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                margin: 0 0 $s_third 0;
+            }
+        }
+
+
+        .headline-border {
+            border-bottom: $border_std;
+
+            &+.modul {
+                margin-top: $s_third;
+            }
+        }
+
+
+
+        .headline-free {
+
+            &+.modul {
+                margin-top: 0px;
+            }
+        }
+
+
+    }
+
+
+
+    /* 3.5.4 - MODULES - Tagarea */
+    /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+    .tagarea {
+
+        @extend %col_base_size;
+        @extend %mt_normal_size;
+        border-top: $border_std;
+        padding: $s_near 0;
+        
+
+        .modul {
+
+            h4, div {
+                font-size: $f_size_13;
+                display: inline;
+            }
+
+            h4 {
+                font-weight: bold;
+            }
+            
+        }
+        
+    }
+
+
+
+    /* 3.5.5 - MODULES - Linkbox */
+    /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+    .linkboxes {
+        
+        @extend %col_full_size;
+        @extend %mt_normal_size;
+
+    }
+
+    .linkbox {
+        background-color: $c_white;
+        
+
+        .content {
+            height: 160px;
+            margin: $s_half;
+            position: relative;
+
+            p, h5 {
+                text-align: center;
+            }
+
+            h5 {
+                font-size: $f_size_24;
+                margin-top: 0;
+            }
+
+            p {
+                margin-bottom: 0;
+                padding: 0 8%;
+            }
+
+            .buttonwrapper {
+
+                text-align: center;
+                position: absolute;
+                bottom: 0px;
+                width: 100%;
+
+                .button,
+                .textbutton {
+                    display: inline-block;
+                }
+                
+                .textbutton {
+                    @extend %a-grey-middle;
+                    margin-bottom: 8px;
+                }
+                .textbutton .btnbody:before {
+                    color: $c_black;
+                }
+                
+            }
+
+        }
+    }
+    
+
+
+
+
+
+
+
+
+    /* 3.5.6 - MODULES - Comments */
+    /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+    #commentarea {
+        
+        @extend %mt_normal_size;
+        background-color: $c_white;
+        padding: $s_middle 0;
+    
+        .wrapper {
+            @extend %col_base_size;
+        }
+
+        &+#footer {
+            margin-top: 0px;
+        }
+        
+    }
+
+    .commentform {
+
+        .comment-submit {
+            margin: $t_margin_passage 0;
+        }
+
+        .comment-info {
+            margin: $t_margin 0;
+        }
+    }
+
+
+
+    .comment {
+
+        border-bottom: $border_std;
+        border-bottom-color: $c_bg;
+
+        
+        .name {
+            margin-top: $t_margin_passage;
+        }
+
+        .tagline {
+            color: $c_grey_dark;
+            font-size: $f_size_13;
+        }
+    }
+    
+
+
+
+    /* 3.5.7 - MODULES - foursteps */
+    /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+    .foursteps {
+        
+        @extend %col_base_size;
+        @extend %mt_normal_size;
+        background: url(../img/reusable/bewegungsloft_trainingsraum.jpg) no-repeat;
+        height: 430px;
+
+        
+        .headline, .content {
+            position: relative;
+            top: 45px;
+        }
+        
+        .headline {
+            
+            display: block;
+            width: 1090px;
+            
+
+            h4 {
+                padding: 4px 30px;
+                display: inline-block;
+                font-size: $f_size_24; 
+                background-color: $c_white;
+            }
+        }
+
+
+
+        .content {
+            background-color: $c_white;
+            width: 1030px;
+            padding: 30px;
+
+            p {
+                margin-bottom: 0;
+                padding-right: 5px;
+            }
+
+            .bar {
+                height: 38px;
+                background: url(../img/reusable/4_schritte_in_das_personal_training.png) no-repeat;
+                margin-bottom: $s_half;
+                position: relative;
+
+                .button {
+                    cursor: pointer;
+                    display: block;
+                    width: 28px;
+                    height: 28px;
+                    color: $c_white;
+                    font-size: 28px;
+                    position: absolute;
+                    
+                    &:hover {
+                        color: $c_logo_red;
+                    }
+                }
+            }
+        }
+
+    }
+
+
+
+
+
+
+    /* 3.5.8 - MODULES - Services Listing */
+    /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+    .serviceslisting {
+            
+            @extend %mt_normal_size;
+            padding: $s_base $s_near $s_plus $s_near;
+            background-color: $c_grey_light;
+            display: inline-block;
+
+            .headline {
+                margin-top: 0px;
+            }
+
+            .imgcontainer {
+               
+                width: 100%;
+                height: 160px;
+                overflow: hidden;
+                margin: 0 0 $s_half 0;
+                position: relative;
+
+                img {
+                    margin: 0px;
+                    width: 100%;
+                }
+
+                .overlay {
+                    height: 160px;
+                    width: 100%;
+                    background-color: $c_white;
+                    opacity: 0;
+                    position: absolute;
+                    @include transition( opacity, .4s );
+
+                    .notice {
+                        padding: 10% 5%;
+                    
+                        p {
+                            color: $c_logo_grey;
+                            margin: 0 0 $s_third 0;
+                        }
+                    }
+                }
+            }
+
+            a:hover {
+
+                .overlay {
+                    top: 0px;
+                    opacity: .9;
+                }
+
+                h5 {
+                    color: $c_logo_red;
+                }
+                
+            }
+
+            h5 {
+                //text-transform: none;
+                //color: $c_grey_dark;
+                font-size: 15px;
+                //font-weight: normal;
+                margin: 0;
+                //height: $s_middle;
+            }
+
+            .quater {
+
+                //border-bottom: 2px solid $c_stone_light;
+            }
+        }
+
+
+
+
+
+
+    /* 3.5.9 - MODULES - Services Listing */
+    /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+    .blog {
+        
+        @extend %col_base_size;
+        @extend %mt_normal_size;
+        $blog_trans_time: .3s;
+      
+        
+        
+        .blog-article {
+            
+            border-top: $border_std;
+            padding: $s_plus 0;
+            @include transition( background-color, $blog_trans_time );
+
+            .date {
+                width:  5%;
+                margin: 0 1%;
+
+                .month,
+                .day {
+                    color: $c_grey_middle;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    font-size: $f_size_16;
+                    @include transition( color, $blog_trans_time );
+                }
+            }
+
+            .headline {
+                font-size: $f_size_18;
+                width: 34%;
+                margin: .2em 2% .2em 0;
+                @include transition( color, $blog_trans_time );
+            }
+
+            .summary {
+                width: 50%;
+                position: relative;
+                margin: 0;
+                @include transition( color, $blog_trans_time );
+
+                 img { 
+                     width: 35%;
+                     padding: 0 1.2em 1.2em 0;
+                     margin: 0;
+                 }
+            }
+
+            .goout {
+                width: 5%;
+                min-height: 100px;
+                &:before {
+                    font-size: 20px;
+                    float: right;
+                    text-align: right;
+                    background-color: $c_logo_red;
+                    color: $c_white;
+                    padding: .2em 0 .2em .3em;
+                }
+            }
+        }
+
+
+        .blog-article:hover {
+
+            background-color: $c_logo_red;
+            border-top-color: $c_white;
+
+            .date {
+                .month,
+                .day {
+                    color: $c_white;
+                }
+            }
+
+            .headline {
+                color: $c_white;
+            }
+
+            .summary {
+                color: $c_white;
+            }
+        }
+
+        .pagination {
+            border-top: $border_std;
+            padding: $s_plus 0;
+            position: relative;
+
+
+            ul.pages {
+                position: absolute;
+                text-align: center;
+                width: 100%;
+                padding: 0;
+                margin: 0;
+
+                li {
+                    display: inline;
+                    a {
+                        line-height: $s_plus;
+                        display: inline-block;
+                        width: $s_plus;
+                        height: $s_plus;
+                        color: $c_grey_middle;
+                        @include transition( background-color, $blog_trans_time );
+
+                        &:hover,
+                        &.active {
+                            background-color: $c_logo_red;
+                            color: $c_white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+        
+    /* 3.5.10 - MODULES - Border */
+    /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+    .border {
+        @extend %col_base_size;
+        @extend %mt_normal_size;
+        height: 5px;
+        border-top: $border_std;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

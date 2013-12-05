@@ -1,0 +1,396 @@
+/*
+     * Image replacement
+     */
+
+    .ir {
+        background-color: transparent;
+        border: 0;
+        overflow: hidden;
+        /* IE 6/7 fallback */
+        *text-indent: -9999px;
+    }
+
+    .ir:before {
+        content: "";
+        display: block;
+        width: 0;
+        height: 150%;
+    }
+
+    /*
+     * Hide from both screenreaders and browsers: h5bp.com/u
+     */
+
+    .hidden {
+        display: none !important;
+        visibility: hidden;
+    }
+
+    /*
+     * Hide only visually, but have it available for screenreaders: h5bp.com/v
+     */
+
+    .visuallyhidden {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    /*
+     * Extends the .visuallyhidden class to allow the element to be focusable
+     * when navigated to via the keyboard: h5bp.com/p
+     */
+
+    .visuallyhidden.focusable:active,
+    .visuallyhidden.focusable:focus {
+        clip: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        position: static;
+        width: auto;
+    }
+
+    /*
+     * Hide visually and from screenreaders, but maintain layout
+     */
+
+    .invisible {
+        visibility: hidden;
+    }
+
+    /*
+     * Clearfix: contain floats
+     *
+     * For modern browsers
+     * 1. The space content is one way to avoid an Opera bug when the
+     *    `contenteditable` attribute is included anywhere else in the document.
+     *    Otherwise it causes space to appear at the top and bottom of elements
+     *    that receive the `clearfix` class.
+     * 2. The use of `table` rather than `block` is only necessary if using
+     *    `:before` to contain the top-margins of child elements.
+     */
+
+    .clearfix:before,
+    .clearfix:after {
+        content: " "; /* 1 */
+        display: table; /* 2 */
+    }
+
+    .clearfix:after {
+        clear: both;
+    }
+
+    /*
+     * For IE 6/7 only
+     * Include this rule to trigger hasLayout and contain floats.
+     */
+
+    .clearfix {
+        *zoom: 1;
+    }
+
+
+    /*
+     * Droput functionality - same level
+     * Just add .droputtrigger to the element which should be the trigger to dropout
+     * .dropoutcontent. The Element .dropouttrigger have to be followed by .dropoutcontent
+     * laying on the same level.
+     * Won't work with space between dropouttrigger and droputcontent.
+     */
+
+    .dropouttrigger+.dropoutcontent {
+        display: none;
+        //left: -999px;
+        //position: absolute;
+    }
+
+    /*.dropouttrigger:hover+.dropoutcontent,
+    .dropoutcontent:hover {
+        position: static;
+    }*/
+      
+    /*[class*="dropouttrigger"]+[class*="dropoutcontent"] {
+        display: block;
+        left: -999px;
+        position: absolute;
+    }
+
+    [class*="dropouttrigger"]:hover+[class*="dropoutcontent"],
+    [class*="dropoutcontent"]:hover {
+        position: static;
+    }*/
+   
+
+
+    /*
+     * Dropout functionality - nested .droputcontent
+     * Just add .droputtrigger to the element which should be the trigger to dropout
+     * .dropoutcontent. The Element .droputcontent have to be nested in .droputtrigger
+     * Won't work with space between dropouttrigger and droputcontent.
+     */
+    
+
+   /*.dropouttrigger .dropoutcontent {
+        display: block;
+        left: -999px;
+        position: absolute;
+    }
+
+    .dropouttrigger:hover .dropoutcontent,
+    .dropoutcontent:hover {
+        position: static;
+    }*/
+
+
+    /*[class*="dropouttrigger"] [class*="dropoutcontent"] {
+        display: block;
+        left: -999px;
+        position: absolute;
+    }
+
+    [class*="dropouttrigger"]:hover [class*="dropoutcontent"],
+    [class*="dropoutcontent"]:hover {
+        position: static;
+    }*/
+
+
+    /*
+     * Dropout functionality - nested .sublevel
+     * Just add .subleveltrigger to the element which should be the trigger to dropout
+     * .sublevel. The dropout functionality must be implemented through JavaScript.
+     * This classes handles just the styling like the +/- Icon handling with the
+     * classes .closed and .opend. 
+     * 
+     *  <div class="subleveltrigger"
+     *      <div class="triggerbutton"> Your Content ... </div>
+     *  </div>
+     *  <div class="sublevel">
+     *      Your Content ...
+     *  <div>
+     *
+     */
+    .subleveltrigger {
+
+        position: relative; // for the icon-boundaries -
+        
+        div.triggerbutton:after {
+            /* plus font-icons - add the class .closed to show a plus icon */
+            @include btn_set_icon("plus", 1.2em, $nav_arrow_right_span);
+            @include shadow_text( 0px, 1px, 1px, $c_white);
+            color: $c_stone_middle;
+        }
+
+        &.active {
+            div.triggerbutton:after {
+                /* minus font-icons - add the class .closed to show a plus icon  */
+                @include btn_set_icon("minus", 1.2em, $nav_arrow_right_span);
+                @include shadow_text( 0px, 1px, 1px, $c_white);
+                color: $c_stone_middle;
+            }
+        } 
+    }
+
+
+
+
+
+
+
+
+
+/*
+ * SWIPE.JS - classes
+ * Classes needed for the swipe.js script from: https://github.com/bradbirdsall/Swipe
+ * Needed code structure:
+ *      <div id='slider' class='swipe'>
+ *         <div class='swipe-wrap'>
+ *           <div></div>
+ *           <div></div>
+ *           <div></div>
+ *         </div>
+ *       </div>
+ */
+
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.swipe-wrap > div {
+  float:left;
+  width:100%;
+  position: relative;
+}
+
+
+
+
+
+
+
+
+/*
+ * COLORIZE AND COLOR THEME
+ * Helper-Classes to colorize things 
+ */
+
+
+// colorize fonts
+.colors-black {
+
+    h1, h2, h3, h4, h5, h6, p, div {
+        color: $c_black;
+    }
+    
+    a {
+        @extend %a-black;
+    }
+}
+
+.colors-white {
+
+    h1, h2, h3, h4, h5, h6, p, div {
+        color: $c_white;
+    }
+    
+    a {
+        @extend %a-white;
+    }
+}
+
+.colors-red {
+
+    h1, h2, h3, h4, h5, h6, p, div {
+        color: $c_logo_red;
+    }
+    
+    a {
+        @extend %a-red;
+    }
+}
+
+.colors-grey {
+
+    h1, h2, h3, h4, h5, h6, p, div {
+        color: $c_logo_grey;
+    }
+    
+    a {
+         @extend %a-red;
+     }
+}
+
+
+
+// colorize fonts and backgrounds
+.colortheme-black {
+
+    background-color: $c_black;
+    
+    h1, h2, h3, h4, h5, h6, p, div {
+        color: $c_white;
+    }
+    
+    a {
+        @extend %a-grey-light;
+    }
+}
+
+
+
+.colortheme-white {
+
+    background-color: $c_white;
+    
+    h1, h2, h3, h4, h5, h6, p, div {
+        color: $c_black;
+    }
+
+    a {
+        @extend %a-red;
+    }
+}
+
+
+
+
+.colortheme-red {
+
+    background-color: $c_logo_red;
+    
+    h1, h2, h3, h4, h5, h6, p, div {
+        color: $c_white;
+    }
+    
+    a {
+        @extend %a-black;
+    }
+}
+
+
+
+.colortheme-grey {
+
+    background-color: $c_logo_grey;
+    
+    h1, h2, h3, h4, h5, h6, p, div {
+        color: $c_white;
+    }
+
+    a {
+        @extend %a-black;
+    }
+}
+
+
+
+
+
+/*
+ * RESPONSIVE VIDEO
+ * Helper-Classes for responsive videos
+ *
+ * NEEDED:
+ *
+ * DOM:
+    <div class="video-wrapper">
+        <div class="video-container">
+            <iframe src="http://player.vimeo.com/video/6284199?title=0&byline=0&portrait=0" width="800" height="450" frameborder="0"></iframe>
+        </div>
+    </div>
+
+ */
+
+/* add a with to .video-wrapper to give your video a fixed with */
+ .video-wrapper {
+    //width: 600px;
+    max-width: 100%;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe,  
+.video-container object,  
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

@@ -23,18 +23,39 @@ define('WP_CONTENT_URL', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content');
 // Define the Default theme
 define('WP_DEFAULT_THEME', 'waterfall');
 
+
+// Check if production or localserver
+if ($_SERVER['REMOTE_ADDR']=='127.0.0.1') {
+    define('WP_ENV', 'development');
+} else {
+    define('WP_ENV', 'production');
+}
+
+// duplich MySQL Settings
+if (WP_ENV == 'development') {
+    define('DB_NAME', 'dev_vickovicevi');
+    define('DB_USER', 'root');
+    define('DB_PASSWORD', '');
+    define('DB_HOST', 'localhost');
+} else {
+    define('DB_NAME', 'mydb-prod');
+    define('DB_USER', 'username');
+    define('DB_PASSWORD', 'pasdword');
+    define('DB_HOST', 'mysql.mysite.com');
+} 
+
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'database_name_here');
+// define('DB_NAME', 'dev_vickovicevi');
 
 /** MySQL database username */
-define('DB_USER', 'username_here');
+// define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'password_here');
+// define('DB_PASSWORD', '');
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost');
+// define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
